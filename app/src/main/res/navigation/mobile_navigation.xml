@@ -3,23 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_land">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.farmmanager.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_land"
+        android:name="com.example.farmmanager.ui.land.LandFragment"
+        android:label="@string/menu_land"
+        tools:layout="@layout/fragment_land" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.farmmanager.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_shelter"
+        android:name="com.example.farmmanager.ui.shelter.ShelterFragment"
+        android:label="@string/menu_shelter"
+        tools:layout="@layout/fragment_shelter" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.farmmanager.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_livestock"
+        android:name="com.example.farmmanager.ui.livestock.LivestockFragment"
+        android:label="@string/menu_livestock"
+        tools:layout="@layout/fragment_livestock" />
+
+    <fragment
+        android:id="@+id/nav_crops"
+        android:name="com.example.farmmanager.ui.crops.CropsFragment"
+        android:label="@string/menu_crops"
+        tools:layout="@layout/fragment_crops" />
 </navigation>

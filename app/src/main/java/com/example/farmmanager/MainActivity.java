@@ -1,5 +1,6 @@
 package com.example.farmmanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -46,10 +47,15 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_back) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void toHome(View view) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
     }
 }

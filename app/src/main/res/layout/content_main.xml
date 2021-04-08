@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Record Sale"
-        android:textSize="35sp"
+        android:textSize="@dimen/title_size"
         android:fontFamily="cursive"
         android:textStyle="bold"
         android:layout_marginBottom="@dimen/margin"/>
@@ -50,7 +50,7 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/height"
         android:id="@+id/quantityInput"
         android:hint="Quantity"
         android:drawableLeft="@drawable/ic_baseline_quantity"
