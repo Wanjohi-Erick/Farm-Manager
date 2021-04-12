@@ -22,6 +22,7 @@
         android:layout_height="50dp"
         android:id="@+id/particularsInput"
         android:hint="Particulars"
+        android:textColor="@color/black"
         android:drawableLeft="@drawable/ic_baseline_particulars"
         android:drawableStart="@drawable/ic_baseline_particulars"
         android:drawablePadding="@dimen/margin"
@@ -37,6 +38,7 @@
         android:layout_height="50dp"
         android:id="@+id/commodityInput"
         android:hint="Commodity"
+        android:textColor="@color/black"
         android:drawableLeft="@drawable/ic_baseline_commodity"
         android:drawableStart="@drawable/ic_baseline_commodity"
         android:drawablePadding="@dimen/margin"
@@ -59,14 +61,17 @@
         android:layout_marginTop="@dimen/margin"
         android:layout_marginLeft="@dimen/margin"
         android:layout_marginRight="@dimen/margin"
+        android:textColor="@color/black"
         android:layout_marginBottom="@dimen/margin"
         android:background="@drawable/edit_text_background"
+        android:inputType="number"
         android:padding="@dimen/margin" />
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp">
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp">
         <RadioButton
             android:id="@+id/radioButtonPaid"
             android:layout_width="match_parent"
@@ -84,7 +89,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/recordSaleBtn"
         android:text="RECORD SALE"
-        android:onClick="toHome"
+        android:onClick="recordSales"
         android:layout_margin="@dimen/margin"/>
 
     <Button
@@ -92,5 +97,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/viewSalesBtn"
         android:text="VIEW  SALES"
+        android:onClick="toHome"
         android:layout_margin="@dimen/margin"/>
 </LinearLayout>

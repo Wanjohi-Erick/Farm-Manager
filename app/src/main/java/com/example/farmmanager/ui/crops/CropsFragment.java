@@ -27,10 +27,6 @@ public class CropsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_crops, container, false);
         RecyclerView cropsRecyclerView = view.findViewById(R.id.availableCropsRecyclerView);
         list.add("maize");
-        list.add("beans");
-        list.add("rice");
-        list.add("wheat");
-        list.add("potatoes");
         CropAdapter cropAdapter = new CropAdapter(list);
         cropsRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
         cropsRecyclerView.setHasFixedSize(true);
