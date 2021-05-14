@@ -3,12 +3,12 @@ package com.example.farmmanager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -25,9 +25,10 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     private EditText particularsEdit, commodityEdit, quantityEdit;
     private String particulars, commodity, quantity;
-    private final String recordSalesUrl = "http://192.168.43.2/FarmManager/recordSale.php";
+    private final String recordSalesUrl = "http://10.0.2.2/FarmManager/recordSale.php";
     private AlertDialog.Builder alertDialog;
     private ProgressDialog progressDialog;
+    private static final String TAG = "VolleyTag";
 
     InternetConnectivity internetConnectivity = new InternetConnectivity();
     @Override
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         }, error -> {
             progressDialog.dismiss();
             alertDialog.setTitle("Server not Found");
+            Log.d(TAG, "sendToDatabase: "+ error.getLocalizedMessage());
             alertDialog.setMessage(error.getLocalizedMessage());
             feedback("server-error");
             error.printStackTrace();
@@ -103,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
     public void toHome(View view) {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void recordSales(View view) {
