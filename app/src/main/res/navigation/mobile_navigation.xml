@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/nav_livestock"
         android:name="com.example.farmmanager.ui.livestock.LivestockFragment"
-        android:label="@string/menu_livestock"
+        android:label="@string/menu_title_livestock"
         tools:layout="@layout/fragment_livestock" />
 
     <fragment
