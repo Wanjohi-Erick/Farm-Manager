@@ -21,4 +21,10 @@
     <string name="menu_title_livestock">Livestock</string>
     <string name="menu_crops">Crops</string>
     <string name="menu_title_crops">Crops</string>
+    <string name="title_activity_launcher">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_crops">Crops</string>
+    <string name="title_animals">Animals</string>
+    <string name="title_account">Account</string>
+
 </resources>

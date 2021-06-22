@@ -19,20 +19,18 @@ import java.util.List;
 
 public class CropsFragment extends Fragment {
     List<String> list = new ArrayList<>();
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_crops, container, false);
         RecyclerView cropsRecyclerView = view.findViewById(R.id.availableCropsRecyclerView);
-        list.add("maize");
+        list.add("Maize");
+        list.add("Beans");
         CropAdapter cropAdapter = new CropAdapter(list);
         cropsRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
         cropsRecyclerView.setHasFixedSize(true);
         cropsRecyclerView.setAdapter(cropAdapter);
         cropsRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-
         return view;
     }
 }

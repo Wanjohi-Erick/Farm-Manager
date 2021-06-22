@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_items">
+        <item>Revenue</item>
+        <item>Expenses</item>
+        <item>Inventory</item>
+        <item>Reports</item>
+        <item>Activities &amp; calendar</item>
+        <item>Notifications &amp; reminders</item>
+        <item>Settings</item>
+        <item>Logout</item>
+    </string-array>
+</resources>

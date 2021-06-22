@@ -5,7 +5,10 @@
 
     <TextView
         android:id="@+id/customRow"
-        android:padding="@dimen/margin"
+        android:padding="@dimen/padding"
+        android:layout_margin="@dimen/margin"
+        android:textSize="@dimen/text_size"
+        android:background="@drawable/custom_row_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </RelativeLayout>

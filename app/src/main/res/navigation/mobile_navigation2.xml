@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation2"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.farmmanager.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home_bottom_nav" />
+
+    <fragment
+        android:id="@+id/navigation_crops"
+        android:name="com.example.farmmanager.ui.crops.CropsFragmentBottomNav"
+        android:label="@string/title_crops"
+        tools:layout="@layout/fragment_crops_bottom_nav" />
+
+    <fragment
+        android:id="@+id/navigation_livestock"
+        android:name="com.example.farmmanager.ui.livestock.LivestockFragmentBottomNav"
+        android:label="@string/title_animals"
+        tools:layout="@layout/fragment_livestock_bottom_nav" />
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.example.farmmanager.ui.account.AccountFragment"
+        android:label="@string/title_account"
+        tools:layout="@layout/fragment_account_bottom_nav"/>
+</navigation>
