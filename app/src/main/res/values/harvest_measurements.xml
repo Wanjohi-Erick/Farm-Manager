@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="harvest_measurements">
+        <item>Select harvest unit:-</item>
+        <item>Bales</item>
+        <item>Bunches</item>
+        <item>Bushels</item>
+        <item>Dozens</item>
+        <item>Gallons</item>
+        <item>Grams</item>
+        <item>Kilos</item>
+        <item>Liters</item>
+        <item>Ounces</item>
+        <item>Pints</item>
+        <item>Pounds</item>
+        <item>Quartz</item>
+        <item>Tonnes</item>
+        <item>Boxes</item>
+        <item>Sacks</item>
+        <item>Baskets</item>
+        <item>Barrels</item>
+    </string-array>
+</resources>

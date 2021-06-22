@@ -10,4 +10,5 @@
     <dimen name="title_size">35sp</dimen>
     <dimen name="padding">10dp</dimen>
     <dimen name="text_size">18sp</dimen>
+    <dimen name="card_view_radius">7dp</dimen>
 </resources>

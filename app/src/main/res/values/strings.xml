@@ -21,10 +21,17 @@
     <string name="menu_title_livestock">Livestock</string>
     <string name="menu_crops">Crops</string>
     <string name="menu_title_crops">Crops</string>
-    <string name="title_activity_launcher">MainActivity</string>
+    <string name="title_activity_launcher">Farm Manager</string>
     <string name="title_home">Home</string>
     <string name="title_crops">Crops</string>
     <string name="title_animals">Animals</string>
     <string name="title_account">Account</string>
+
+    <string name="profile">Profile</string>
+    <string name="social">Social Media <br /> Links</string>
+    <string name="invite">Invite</string>
+    <string name="news_weather">News &amp; <br /> Weather</string>
+    <string name="quick_access">Quick <br /> Access</string>
+    <string name="support">Help / <br /> Support</string>
 
 </resources>
