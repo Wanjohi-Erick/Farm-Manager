@@ -27,6 +27,7 @@
         android:background="@drawable/edit_text_background"/>
 
     <Button
+        android:id="@+id/save_crop_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"

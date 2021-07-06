@@ -7,45 +7,46 @@
     tools:context=".ui.crops.CropsFragmentBottomNav">
 
     <ViewSwitcher
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/view_switcher"
+        android:layout_width="match_parent"
+        android:layout_height="528dp"
         android:background="@color/common_background">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="bottom">
+            android:gravity="bottom"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/no_crop_added_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No crops added yet"
                 android:layout_marginBottom="200dp"
-                android:textSize="@dimen/text_size"
+                android:gravity="center_horizontal"
+                android:text="No crops added yet"
                 android:textAlignment="center"
-                android:gravity="center_horizontal" />
+                android:textSize="@dimen/text_size" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:id="@+id/fab"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_add"
-                android:layout_marginBottom="60dp"
-                android:layout_marginEnd="16dp"
-                android:layout_gravity="bottom|end"
-                android:layout_marginRight="16dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/all_crops_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/all_crops_recycler"/>
+                android:layout_height="wrap_content" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:id="@+id/fab"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add"
+                android:layout_margin="@dimen/fab_margin"
+                android:layout_gravity="bottom|end"
+                android:contentDescription="Add crop" />
         </LinearLayout>
     </ViewSwitcher>
 </LinearLayout>
