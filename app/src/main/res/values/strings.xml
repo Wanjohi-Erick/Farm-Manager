@@ -33,5 +33,7 @@
     <string name="news_weather">News &amp; <br /> Weather</string>
     <string name="quick_access">Quick <br /> Access</string>
     <string name="support">Help / <br /> Support</string>
+    <string name="menu_sales">Sales</string>
+    <string name="sales_record">Sales Record</string>
 
 </resources>

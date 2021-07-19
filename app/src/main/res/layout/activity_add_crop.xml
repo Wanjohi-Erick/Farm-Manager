@@ -17,6 +17,14 @@
         android:padding="@dimen/padding"
         android:background="@drawable/edit_text_background"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select measurement unit:-"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"/>
+
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,10 +34,28 @@
         android:padding="@dimen/padding"
         android:background="@drawable/edit_text_background"/>
 
-    <Button
-        android:id="@+id/save_crop_btn"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Select land to plant on:-"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/land_spinner"
+        android:textSize="@dimen/text_size"
+        android:layout_margin="@dimen/margin"
+        android:padding="@dimen/padding"
+        android:background="@drawable/edit_text_background"/>
+
+    <Button
+        android:id="@+id/save_crop_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
         android:text="Save"
         android:layout_margin="@dimen/margin"
         android:layout_gravity="center_horizontal"/>

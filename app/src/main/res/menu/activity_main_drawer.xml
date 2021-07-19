@@ -71,7 +71,7 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item android:title="Sales"
-                    android:id="@+id/sales_records"
+                    android:id="@+id/nav_sales"
                     android:icon="@drawable/ic_menu_send"/>
                 <item android:title="Input"
                     android:id="@+id/farm_input_records"

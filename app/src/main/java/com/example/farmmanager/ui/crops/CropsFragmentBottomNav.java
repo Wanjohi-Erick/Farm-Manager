@@ -41,7 +41,7 @@ public class CropsFragmentBottomNav extends Fragment {
     RecyclerView allCropsRecycler;
     CropAdapter cropAdapter;
     List<String> list = new ArrayList<>();
-    String urlToRetrieve = "http://192.168.1.103/FarmManager/retrieveAvailableCrops.php";
+    String urlToRetrieve = "http://10.0.2.2/FarmManager/retrieveAvailableCrops.php";
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
     private static final String TAG = "CropsFragmentBottomNav";
@@ -89,8 +89,8 @@ public class CropsFragmentBottomNav extends Fragment {
                 if (serverResponse.equalsIgnoreCase("Success")){
                     alertDialog.setTitle("title");
                     alertDialog.setMessage("Length" + length);
-                    AlertDialog dialog = alertDialog.create();
-                    dialog.show();
+                    alertDialog.create();
+                    alertDialog.show();
                 } else {
                     alertDialog.setTitle("Server Error");
                     alertDialog.setMessage("Failed to retrieve");
@@ -102,8 +102,10 @@ public class CropsFragmentBottomNav extends Fragment {
             }
         }, error -> {
             progressDialog.dismiss();
-            alertDialog.setTitle("error");
-            alertDialog.setMessage("error");
+            alertDialog.setTitle("Server Error");
+            alertDialog.setMessage(error.getLocalizedMessage());
+            AlertDialog dialog = alertDialog.create();
+            dialog.show();
         });
         stringRequest.setShouldCache(false);
         Volley.newRequestQueue(getContext()).add(stringRequest);

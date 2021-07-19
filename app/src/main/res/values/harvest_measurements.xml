@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="harvest_measurements">
-        <item>Select harvest unit:-</item>
         <item>Bales</item>
         <item>Bunches</item>
         <item>Bushels</item>

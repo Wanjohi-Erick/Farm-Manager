@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="land_records">
+        <item>Land A</item>
+        <item>Land B</item>
+        <item>Land C</item>
+        <item>Land D</item>
+        <item>Land E</item>
+        <item>Land F</item>
+    </string-array>
+</resources>

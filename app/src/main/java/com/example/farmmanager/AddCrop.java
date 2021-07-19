@@ -1,7 +1,6 @@
 package com.example.farmmanager;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -12,54 +11,61 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class AddCrop extends AppCompatActivity implements View.OnClickListener {
-    String[] items;
-    List<String> list = new ArrayList<>();
-    Spinner spinner;
+    String[] harvest_units_array, land_details_array;
+    List<String> harvest_units_list = new ArrayList<>();
+    List<String> land_details_list = new ArrayList<>();
+    Spinner harvest_unit_spinner, land_to_plant_spinner;
     EditText cropName;
-    String cropNameTxt, unit;
+    String cropNameTxt, harvest_unit, land_details;
     Button save;
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
-    String urlToSave = "http://192.168.1.103/FarmManager/recordCrops.php";
+    String urlToSave = "http://10.0.2.2/FarmManager/recordCrops.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_crop);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         //instantiating views
         save = findViewById(R.id.save_crop_btn);
         cropName = findViewById(R.id.crop_name);
-        spinner = findViewById(R.id.harvest_unit_spinner);
+        harvest_unit_spinner = findViewById(R.id.harvest_unit_spinner);
+        land_to_plant_spinner = findViewById(R.id.land_spinner);
         progressDialog = new ProgressDialog(this);
         alertDialog = new AlertDialog.Builder(this);
 
         //end of instantiation
         Resources resources = getResources();
-        items = resources.getStringArray(R.array.harvest_measurements);
-        list.addAll(Arrays.asList(items));
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
+        harvest_units_array = resources.getStringArray(R.array.harvest_measurements);
+        land_details_array = resources.getStringArray(R.array.land_records);
+        harvest_units_list.addAll(Arrays.asList(harvest_units_array));
+        land_details_list.addAll(Arrays.asList(land_details_array));
+        ArrayAdapter<String> harvest_units_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, harvest_units_list);
+        harvest_units_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        harvest_unit_spinner.setAdapter(harvest_units_adapter);
+
+        ArrayAdapter<String> land_details_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, land_details_list);
+        land_details_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        land_to_plant_spinner.setAdapter(land_details_adapter);
         save.setOnClickListener(this);
 
     }
@@ -68,20 +74,31 @@ public class AddCrop extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         if (v == findViewById(R.id.save_crop_btn)){
             cropNameTxt = cropName.getText().toString();
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            harvest_unit_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    unit = String.valueOf(parent.getItemAtPosition(position));
+                    harvest_unit = String.valueOf(parent.getItemAtPosition(position));
                 }
 
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
-                    unit = "";
+                    harvest_unit = "";
                 }
             });
             // TODO: 25/06/2021 handle the null response from views
 
-            sendToDatabase(cropNameTxt, unit);
+            land_to_plant_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    land_details = String.valueOf(parent.getItemAtPosition(position));
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    harvest_unit = "";
+                }
+            });
+            sendToDatabase(cropNameTxt, harvest_unit);
             progressDialog.setTitle("Saving crop details");
             progressDialog.setMessage("Please wait...");
             progressDialog.show();
@@ -97,14 +114,11 @@ public class AddCrop extends AppCompatActivity implements View.OnClickListener {
             AlertDialog dialog = alertDialog.create();
             dialog.show();
         } else {
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, urlToSave, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    progressDialog.dismiss();
-                    alertDialog.setTitle("Server Response");
-                    alertDialog.setMessage(response);
-                    feedback(response);
-                }
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, urlToSave, response -> {
+                progressDialog.dismiss();
+                alertDialog.setTitle("Server Response");
+                alertDialog.setMessage(response);
+                feedback(response);
             }, error -> {
                 progressDialog.dismiss();
                 alertDialog.setMessage("Server Error");
@@ -112,13 +126,13 @@ public class AddCrop extends AppCompatActivity implements View.OnClickListener {
                 feedback("Server Error");
                 error.printStackTrace();
             }){
-                @Nullable
-                @org.jetbrains.annotations.Nullable
+                @NotNull
                 @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
+                protected Map<String, String> getParams() {
                     Map<String, String> cropDetails = new HashMap<>();
                     cropDetails.put("name", cropNameTxt);
                     cropDetails.put("units", unit);
+                    cropDetails.put("land", land_details);
                     return cropDetails;
                 }
             };
