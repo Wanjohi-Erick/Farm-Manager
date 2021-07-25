@@ -39,7 +39,9 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
+            android:theme="@style/Theme.FarmManager.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
