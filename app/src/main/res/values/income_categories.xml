@@ -1,0 +1,7 @@
+<resources>
+    <string-array name="income_categories">
+        <item>Sales</item>
+        <item>Training / Consultation</item>
+        <item>Lease</item>
+    </string-array>
+</resources>

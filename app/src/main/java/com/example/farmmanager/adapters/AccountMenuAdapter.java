@@ -1,14 +1,17 @@
 package com.example.farmmanager.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmmanager.R;
+import com.example.farmmanager.Revenue;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -17,6 +20,7 @@ import java.util.List;
 public class AccountMenuAdapter extends RecyclerView.Adapter<AccountMenuAdapter.MyViewHolder> {
 
     List<String> accountOptions;
+
     public AccountMenuAdapter(List<String> menuOptions) {
         this.accountOptions = menuOptions;
     }
@@ -32,6 +36,25 @@ public class AccountMenuAdapter extends RecyclerView.Adapter<AccountMenuAdapter.
     @Override
     public void onBindViewHolder(@NotNull MyViewHolder holder, int position) {
         holder.custom_row.setText(accountOptions.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (position){
+                    case 0:
+                        Toast.makeText(v.getContext(), "Position" + "0", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        Intent intent  = new Intent(v.getContext(), Revenue.class);
+                        v.getContext().startActivity(intent);
+                        break;
+                    case 2:
+                        Toast.makeText(v.getContext(), "Yep", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        Toast.makeText(v.getContext(), "finish", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
