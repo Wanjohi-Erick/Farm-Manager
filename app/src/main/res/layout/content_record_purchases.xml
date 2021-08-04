@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/particularsInput"
-                android:hint="Particulars"
+                android:hint="Provider"
                 android:textColor="@color/black"
                 android:drawableLeft="@drawable/ic_baseline_particulars"
                 android:drawableStart="@drawable/ic_baseline_particulars"
@@ -125,7 +125,7 @@
             </RadioGroup>
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/recordReceiptBtn"
                 android:text="RECORD receipt"
@@ -167,11 +167,17 @@
                 android:inputType="phone"
                 android:padding="@dimen/margin" />
 
+            <CheckBox
+                android:id="@+id/addToInventoryCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ADD TO INVENTORY"/>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/recordSaleBtn"
-                android:text="RECORD SALE"
+                android:text="RECORD PURCHASE"
                 android:onClick="recordSales"
                 android:layout_margin="@dimen/margin"/>
 
@@ -179,7 +185,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/viewSalesBtn"
-                android:text="VIEW SALES"
+                android:text="VIEW PURCHASES"
                 android:onClick="toHome"
                 android:layout_margin="@dimen/margin"/>
         </LinearLayout>
