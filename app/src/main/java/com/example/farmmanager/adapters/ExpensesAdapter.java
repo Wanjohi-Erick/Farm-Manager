@@ -1,5 +1,6 @@
 package com.example.farmmanager.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmmanager.R;
+import com.example.farmmanager.RecordPurchasesActivity;
+import com.example.farmmanager.RecordSalesActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -31,6 +34,32 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
         holder.placeHolder.setText(expensesCategories.get(position));
+        switch (position){
+            case 0:
+                holder.placeHolder.setOnClickListener(v -> {
+                    Intent intent = new Intent(v.getContext(), RecordPurchasesActivity.class);
+                    v.getContext().startActivity(intent);
+                });
+                break;
+            case 1:
+                holder.placeHolder.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //TODO Intent intent = new Intent(v.getContext(), TrainingActivity.class);
+                        //v.getContext().startActivity(intent);
+                    }
+                });
+                break;
+            case 2:
+                holder.placeHolder.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //TODO Intent intent = new Intent(v.getContext(), LeaseActivity.class);
+                        //v.getContext().startActivity(intent);
+                    }
+                });
+                break;
+        }
     }
 
 

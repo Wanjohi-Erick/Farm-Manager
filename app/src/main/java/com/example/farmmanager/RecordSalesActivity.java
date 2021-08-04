@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,14 +18,14 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
-    private EditText particularsEdit, commodityEdit, quantityEdit;
+public class RecordSalesActivity extends AppCompatActivity {
+    private EditText particularsEdit, commodityEdit, quantityEdit, priceEdit, transactionIDEdit, contactEdit;
     private String particulars, commodity, quantity;
+    private RadioGroup paymentRadio;
     private final String recordSalesUrl = "http://10.0.2.2/FarmManager/recordSale.php";
     private AlertDialog.Builder alertDialog;
     private ProgressDialog progressDialog;
@@ -34,18 +35,30 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_record_sales);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
-
         particularsEdit = findViewById(R.id.particularsInput);
         commodityEdit = findViewById(R.id.commodityInput);
         quantityEdit = findViewById(R.id.quantityInput);
         alertDialog = new AlertDialog.Builder(this);
+        paymentRadio = findViewById(R.id.paymentRadio);
+        priceEdit = findViewById(R.id.priceInput);
+        transactionIDEdit = findViewById(R.id.transactionIDInput);
+        contactEdit = findViewById(R.id.contactInput);
+        getRadioChecked();
+    }
+
+    private void getRadioChecked() {
+        paymentRadio.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.radioButtonTransfer){
+                transactionIDEdit.setVisibility(View.VISIBLE);
+            }else {
+                transactionIDEdit.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void getFromEditTexts() {
@@ -141,4 +154,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    public void recordReceipt(View view) {
+        //TODO Create an event handler for capturing receipt information
+    }
 }

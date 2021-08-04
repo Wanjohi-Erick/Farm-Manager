@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/layout_background"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Record Sale"
+                android:textSize="@dimen/title_size"
+                android:fontFamily="cursive"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginBottom="@dimen/margin"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/particularsInput"
+                android:hint="Particulars"
+                android:textColor="@color/black"
+                android:drawableLeft="@drawable/ic_baseline_particulars"
+                android:drawableStart="@drawable/ic_baseline_particulars"
+                android:drawablePadding="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_marginBottom="@dimen/margin"
+                android:inputType="textPersonName"
+                android:background="@drawable/edit_text_background"
+                android:padding="@dimen/margin" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/commodityInput"
+                android:hint="Commodity"
+                android:textColor="@color/black"
+                android:drawableLeft="@drawable/ic_baseline_commodity"
+                android:drawableStart="@drawable/ic_baseline_commodity"
+                android:drawablePadding="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_marginBottom="@dimen/margin"
+                android:background="@drawable/edit_text_background"
+                android:padding="@dimen/margin" />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height"
+                android:id="@+id/quantityInput"
+                android:hint="Quantity"
+                android:drawableLeft="@drawable/ic_baseline_quantity"
+                android:drawableStart="@drawable/ic_baseline_quantity"
+                android:drawablePadding="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/margin"
+                android:background="@drawable/edit_text_background"
+                android:inputType="number"
+                android:padding="@dimen/margin" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height"
+                android:id="@+id/priceInput"
+                android:hint="Price"
+                android:drawableLeft="@drawable/ic_money"
+                android:drawableStart="@drawable/ic_money"
+                android:drawablePadding="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/margin"
+                android:background="@drawable/edit_text_background"
+                android:inputType="number"
+                android:padding="@dimen/margin" />
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/paymentRadio"
+                android:layout_marginLeft="@dimen/margin"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_marginStart="@dimen/margin">
+                <RadioButton
+                    android:id="@+id/radioButtonCash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cash" />
+                <RadioButton
+                    android:id="@+id/radioButtonCredit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Credit" />
+                <RadioButton
+                    android:id="@+id/radioButtonTransfer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Transfer" />
+            </RadioGroup>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recordReceiptBtn"
+                android:text="RECORD receipt"
+                android:onClick="recordReceipt"
+                android:layout_margin="@dimen/margin"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height"
+                android:id="@+id/transactionIDInput"
+                android:hint="Transaction ID"
+                android:visibility="gone"
+                android:drawableLeft="@drawable/ic_phone"
+                android:drawableStart="@drawable/ic_phone"
+                android:drawablePadding="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/margin"
+                android:background="@drawable/edit_text_background"
+                android:inputType="textCapCharacters"
+                android:padding="@dimen/margin" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height"
+                android:id="@+id/contactInput"
+                android:hint="Contact"
+                android:drawableLeft="@drawable/ic_phone"
+                android:drawableStart="@drawable/ic_phone"
+                android:drawablePadding="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/margin"
+                android:background="@drawable/edit_text_background"
+                android:inputType="phone"
+                android:padding="@dimen/margin" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recordSaleBtn"
+                android:text="RECORD SALE"
+                android:onClick="recordSales"
+                android:layout_margin="@dimen/margin"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewSalesBtn"
+                android:text="VIEW SALES"
+                android:onClick="toHome"
+                android:layout_margin="@dimen/margin"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

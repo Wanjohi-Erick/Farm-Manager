@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import com.example.farmmanager.MainActivity;
+import com.example.farmmanager.RecordSalesActivity;
 import com.example.farmmanager.R;
 
 public class HomeFragment extends Fragment {
@@ -22,7 +22,7 @@ public class HomeFragment extends Fragment {
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), MainActivity.class));
+                startActivity(new Intent(getContext(), RecordSalesActivity.class));
             }
         });
         return root;
