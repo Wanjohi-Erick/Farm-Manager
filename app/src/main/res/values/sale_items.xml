@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sale_items">
+        <item>Select item to sell:-</item>
+        <item>Crop</item>
+        <item>Animal</item>
+        <item>Milk</item>
+        <item>By-product</item>
+        <item>Meat</item>
+        <item>Eggs</item>
+        <item>Value Added Product</item>
+        <item>From Inventory</item>
+    </string-array>
+
+    <string-array name="by_products">
+        <item>Select by-product:-</item>
+        <item>Manure</item>
+        <item>Skin</item>
+        <item>Slaughter Waste</item>
+        <item>Silage</item>
+    </string-array>
+</resources>

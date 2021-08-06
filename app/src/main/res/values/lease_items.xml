@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lease_items">
+        <item>Select item to lease:-</item>
+        <item>Land</item>
+        <item>Equipment</item>
+        <item>Animal</item>
+        <item>Buildings</item>
+        <item>From Inventory</item>
+    </string-array>
+</resources>
