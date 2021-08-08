@@ -45,7 +45,7 @@ public class RecordSalesActivity extends AppCompatActivity {
     private static final String TAG = "VolleyTag";
     private final String recordSalesUrl = "http://192.168.1.103/FarmManager/recordSale.php";
     private String[] sale_items;
-    private int requestCode = 100;
+    private final int requestCode = 100;
 
 
     InternetConnectivity internetConnectivity = new InternetConnectivity();

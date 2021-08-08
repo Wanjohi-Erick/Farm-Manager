@@ -39,5 +39,6 @@
     <string name="tab_expenses">Expenses</string>
     <string name="tab_income">Income</string>
     <string name="title_activity_record_purchases">RecordPurchasesActivity</string>
+    <string name="title_activity_bills">BillsActivity</string>
 
 </resources>

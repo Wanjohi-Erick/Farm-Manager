@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.farmmanager.BillsActivity;
 import com.example.farmmanager.R;
 import com.example.farmmanager.RecordPurchasesActivity;
 import com.example.farmmanager.RecordSalesActivity;
@@ -42,21 +43,15 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
                 });
                 break;
             case 1:
-                holder.placeHolder.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //TODO Intent intent = new Intent(v.getContext(), TrainingActivity.class);
-                        //v.getContext().startActivity(intent);
-                    }
+                holder.placeHolder.setOnClickListener(v -> {
+                    Intent intent = new Intent(v.getContext(), BillsActivity.class);
+                    v.getContext().startActivity(intent);
                 });
                 break;
             case 2:
-                holder.placeHolder.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //TODO Intent intent = new Intent(v.getContext(), LeaseActivity.class);
-                        //v.getContext().startActivity(intent);
-                    }
+                holder.placeHolder.setOnClickListener(v -> {
+                    //TODO Intent intent = new Intent(v.getContext(), SalaryActivity.class);
+                    //v.getContext().startActivity(intent);
                 });
                 break;
         }
