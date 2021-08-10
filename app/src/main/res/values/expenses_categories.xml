@@ -2,7 +2,7 @@
     <string-array name="expenses_categories">
         <item>Purchase</item>
         <item>Bills</item>
-        <item>Salary Wage</item>
+        <item>Salary / Wage</item>
         <item>Vet</item>
         <item>Training / Consultation</item>
         <item>Transport / Fuel</item>

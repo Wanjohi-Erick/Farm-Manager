@@ -13,6 +13,7 @@ import com.example.farmmanager.BillsActivity;
 import com.example.farmmanager.R;
 import com.example.farmmanager.RecordPurchasesActivity;
 import com.example.farmmanager.RecordSalesActivity;
+import com.example.farmmanager.SalaryActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -50,8 +51,8 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
                 break;
             case 2:
                 holder.placeHolder.setOnClickListener(v -> {
-                    //TODO Intent intent = new Intent(v.getContext(), SalaryActivity.class);
-                    //v.getContext().startActivity(intent);
+                    Intent intent = new Intent(v.getContext(), SalaryActivity.class);
+                    v.getContext().startActivity(intent);
                 });
                 break;
         }

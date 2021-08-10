@@ -46,6 +46,7 @@ public class RecordSalesActivity extends AppCompatActivity {
     private final String recordSalesUrl = "http://192.168.1.103/FarmManager/recordSale.php";
     private String[] sale_items;
     private final int requestCode = 100;
+    private Bitmap captureImage;
 
 
     InternetConnectivity internetConnectivity = new InternetConnectivity();
@@ -224,7 +225,7 @@ public class RecordSalesActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100){
-            Bitmap captureImage = (Bitmap) data.getExtras().get("data");
+            captureImage = (Bitmap) data.getExtras().get("data");
             Date date = new Date();
             getFromEditTexts();
             captureImageInfo = "receipt_" + particulars + "_" + price + "_" + date;

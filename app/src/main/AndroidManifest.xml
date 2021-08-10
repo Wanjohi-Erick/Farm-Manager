@@ -18,13 +18,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".SalaryActivity"
+            android:label="@string/title_activity_salary"
+            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
+        <activity
             android:name=".BillsActivity"
             android:label="@string/title_activity_bills"
-            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
+            android:theme="@style/Theme.FarmManager.NoActionBar" />
         <activity
             android:name=".RecordPurchasesActivity"
             android:label="@string/title_activity_record_purchases"
-            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
+            android:theme="@style/Theme.FarmManager.NoActionBar" />
         <activity
             android:name=".Revenue"
             android:label="@string/title_activity_revenue"
