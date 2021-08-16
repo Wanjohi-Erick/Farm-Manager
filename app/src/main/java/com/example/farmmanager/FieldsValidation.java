@@ -8,6 +8,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 
+import org.w3c.dom.Text;
+
 public class FieldsValidation {
     private final EditText particulars, quantity, price, transactionID, contact;
     private Context context;
@@ -64,6 +66,15 @@ public class FieldsValidation {
             });
             AlertDialog dialog = builder.create();
             dialog.show();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean invalidInputFields(String transactionIDStr) {
+        if (TextUtils.isEmpty(transactionIDStr)){
+            transactionID.setError("Input Required");
+            transactionID.requestFocus();
             return true;
         }
         return false;
