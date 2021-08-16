@@ -70,6 +70,6 @@ public class SalaryActivity extends AppCompatActivity {
     }
 
     private void feedback(String feedback) {
-
+        //use the feedback to display an alert dialog related to the message.
     }
 }
