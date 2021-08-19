@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="farm_activities">
+        <item>Select farm activity:-</item>
+        <item>Ploughing</item>
+        <item>Leveling</item>
+        <item>Nursery</item>
+        <item>Water</item>
+        <item>Hard Leveling</item>
+        <item>Planting</item>
+    </string-array>
+</resources>

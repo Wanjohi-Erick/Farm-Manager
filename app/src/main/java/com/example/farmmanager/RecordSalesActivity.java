@@ -43,7 +43,7 @@ public class RecordSalesActivity extends AppCompatActivity {
     private AlertDialog.Builder alertDialog;
     private ProgressDialog progressDialog;
     private static final String TAG = "VolleyTag";
-    private final String recordSalesUrl = "http://192.168.1.103/FarmManager/recordSale.php";
+    private final String recordSalesUrl = "http://192.168.1.110/FarmManager/recordSale.php";
     private String[] sale_items;
     private final int requestCode = 100;
     private Bitmap captureImage;
@@ -126,12 +126,16 @@ public class RecordSalesActivity extends AppCompatActivity {
             progressDialog.dismiss();
             alertDialog.setTitle("Server Response");
             alertDialog.setMessage(response);
+            AlertDialog dialog = alertDialog.create();
+            dialog.show();
             feedback(response);
         }, error -> {
             progressDialog.dismiss();
             alertDialog.setTitle("Server not Found");
             Log.d(TAG, "sendToDatabase: "+ error.getLocalizedMessage());
             alertDialog.setMessage(error.getLocalizedMessage());
+            AlertDialog dialog = alertDialog.create();
+            dialog.show();
             feedback("server-error");
             error.printStackTrace();
         }){

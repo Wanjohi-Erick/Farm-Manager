@@ -23,27 +23,30 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Record Bill"
+                android:text="Record Salary"
                 android:textSize="@dimen/title_size"
                 android:fontFamily="cursive"
                 android:textStyle="bold"
+                android:onClick="viewSalaries"
                 android:layout_marginTop="@dimen/margin"
                 android:layout_marginBottom="@dimen/margin"/>
 
 
-            <Spinner
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/worker_spinner"
+                android:id="@+id/particulars_edit"
                 android:textColor="@color/black"
-                android:drawableLeft="@drawable/ic_baseline_commodity"
-                android:drawableStart="@drawable/ic_baseline_commodity"
+                android:drawableLeft="@drawable/ic_baseline_particulars"
+                android:drawableStart="@drawable/ic_baseline_particulars"
+                android:hint="Particulars"
                 android:drawablePadding="@dimen/margin"
                 android:layout_marginTop="@dimen/margin"
                 android:layout_marginLeft="@dimen/margin"
                 android:layout_marginRight="@dimen/margin"
                 android:layout_marginBottom="@dimen/margin"
                 android:background="@drawable/edit_text_background"
+                android:inputType="textPersonName|textCapWords"
                 android:padding="@dimen/margin" />
 
             <Spinner
@@ -59,6 +62,23 @@
                 android:layout_marginRight="@dimen/margin"
                 android:layout_marginBottom="@dimen/margin"
                 android:background="@drawable/edit_text_background"
+                android:padding="@dimen/margin" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/amount_edit"
+                android:textColor="@color/black"
+                android:drawableLeft="@drawable/ic_money"
+                android:drawableStart="@drawable/ic_money"
+                android:hint="Amount"
+                android:drawablePadding="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_marginBottom="@dimen/margin"
+                android:background="@drawable/edit_text_background"
+                android:inputType="number"
                 android:padding="@dimen/margin" />
 
             <RadioGroup
