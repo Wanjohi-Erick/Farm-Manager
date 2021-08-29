@@ -39,7 +39,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hi, Erick" />
+            android:text="Hi, User" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,7 +56,7 @@
             android:layout_weight="1"
             app:cardCornerRadius="@dimen/card_view_radius"
             android:layout_margin="@dimen/margin"
-            android:id="@+id/transactions">
+            android:id="@+id/transactions_card_view">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
             android:layout_weight="1"
             app:cardCornerRadius="7dp"
             android:layout_margin="@dimen/margin"
-            android:id="@+id/animals">
+            android:id="@+id/livestock_card_view">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
             android:layout_weight="1"
             app:cardCornerRadius="7dp"
             android:layout_margin="@dimen/margin"
-            android:id="@+id/crops">
+            android:id="@+id/crops_card_view">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
             android:layout_weight="1"
             app:cardCornerRadius="@dimen/card_view_radius"
             android:layout_margin="@dimen/margin"
-            android:id="@+id/notifications">
+            android:id="@+id/notifications_card_view">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
             android:layout_weight="1"
             app:cardCornerRadius="7dp"
             android:layout_margin="@dimen/margin"
-            android:id="@+id/calendar">
+            android:id="@+id/calendar_card_view">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
             android:layout_weight="1"
             app:cardCornerRadius="7dp"
             android:layout_margin="@dimen/margin"
-            android:id="@+id/settings">
+            android:id="@+id/settings_card_view">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

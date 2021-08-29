@@ -41,5 +41,12 @@
     <string name="title_activity_record_purchases">RecordPurchasesActivity</string>
     <string name="title_activity_bills">BillsActivity</string>
     <string name="title_activity_salary">SalaryActivity</string>
+    <string name="title_plans">Plans</string>
+    <string name="title_reports">Reports</string>
+    <string name="title_resources">Resources</string>
+    <string name="title_activity_crops">CropsActivity</string>
+    <string name="title_activity_livestock">LivestockActivity</string>
+    <string name="title_activity_transactions">TransactionsActivity</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
 
 </resources>

@@ -8,17 +8,17 @@
 
     <item
         android:id="@+id/navigation_crops"
-        android:icon="@mipmap/crops"
-        android:title="@string/title_crops" />
+        android:icon="@drawable/ic_baseline_resources"
+        android:title="@string/title_resources" />
 
     <item
         android:id="@+id/navigation_livestock"
-        android:icon="@mipmap/livestock"
-        android:title="@string/title_animals" />
+        android:icon="@drawable/ic_baseline_reports"
+        android:title="@string/title_reports" />
 
     <item
         android:id="@+id/navigation_account"
-        android:icon="@drawable/ic_baseline_account_circle_24"
-        android:title="@string/title_account"/>
+        android:icon="@drawable/ic_baseline_plans"
+        android:title="@string/title_plans"/>
 
 </menu>
