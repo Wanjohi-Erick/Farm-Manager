@@ -18,9 +18,26 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".CalendarActivity"
+            android:label="@string/title_activity_calendar"
+            android:theme="@style/Theme.FarmManager.NoActionBar">
+        </activity>
+        <activity
+            android:name=".TransactionsActivity"
+            android:label="@string/title_activity_transactions"
+            android:theme="@style/Theme.FarmManager.NoActionBar" />
+        <activity
+            android:name=".LivestockActivity"
+            android:label="@string/title_activity_livestock"
+            android:theme="@style/Theme.FarmManager.NoActionBar" />
+        <activity
+            android:name=".CropsActivity"
+            android:label="@string/title_activity_crops"
+            android:theme="@style/Theme.FarmManager.NoActionBar" />
+        <activity
             android:name=".SalaryActivity"
             android:label="@string/title_activity_salary"
-            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
+            android:theme="@style/Theme.FarmManager.NoActionBar" />
         <activity
             android:name=".BillsActivity"
             android:label="@string/title_activity_bills"

@@ -12,16 +12,17 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.farmmanager.databinding.ActivityLauncherBinding;
 
-public class LauncherActivity extends AppCompatActivity {
+import java.util.Objects;
 
-    private ActivityLauncherBinding binding;
+public class LauncherActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityLauncherBinding.inflate(getLayoutInflater());
+        com.example.farmmanager.databinding.ActivityLauncherBinding binding = ActivityLauncherBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
