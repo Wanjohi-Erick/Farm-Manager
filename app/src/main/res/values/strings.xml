@@ -48,5 +48,6 @@
     <string name="title_activity_livestock">LivestockActivity</string>
     <string name="title_activity_transactions">TransactionsActivity</string>
     <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="title_activity_update_crop_avtivity">UpdateCropAvtivity</string>
 
 </resources>

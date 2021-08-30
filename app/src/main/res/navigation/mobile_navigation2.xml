@@ -12,19 +12,19 @@
         tools:layout="@layout/fragment_home_bottom_nav" />
 
     <fragment
-        android:id="@+id/navigation_crops"
+        android:id="@+id/navigation_resources"
         android:name="com.example.farmmanager.ui.crops.CropsFragmentBottomNav"
-        android:label="@string/title_crops"
+        android:label="@string/title_resources"
         tools:layout="@layout/fragment_crops_bottom_nav" />
 
     <fragment
-        android:id="@+id/navigation_livestock"
+        android:id="@+id/navigation_reports"
         android:name="com.example.farmmanager.ui.livestock.LivestockFragmentBottomNav"
-        android:label="@string/title_animals"
+        android:label="@string/title_reports"
         tools:layout="@layout/fragment_livestock_bottom_nav" />
     <fragment
-        android:id="@+id/navigation_account"
+        android:id="@+id/navigation_plans"
         android:name="com.example.farmmanager.ui.account.AccountFragment"
-        android:label="@string/title_account"
+        android:label="@string/title_plans"
         tools:layout="@layout/fragment_account_bottom_nav"/>
 </navigation>

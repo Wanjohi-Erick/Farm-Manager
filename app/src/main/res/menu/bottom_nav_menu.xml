@@ -7,17 +7,17 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_crops"
+        android:id="@+id/navigation_resources"
         android:icon="@drawable/ic_baseline_resources"
         android:title="@string/title_resources" />
 
     <item
-        android:id="@+id/navigation_livestock"
+        android:id="@+id/navigation_reports"
         android:icon="@drawable/ic_baseline_reports"
         android:title="@string/title_reports" />
 
     <item
-        android:id="@+id/navigation_account"
+        android:id="@+id/navigation_plans"
         android:icon="@drawable/ic_baseline_plans"
         android:title="@string/title_plans"/>
 

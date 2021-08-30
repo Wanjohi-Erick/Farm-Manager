@@ -1,5 +1,7 @@
 package com.example.farmmanager.adapters;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmmanager.R;
+import com.example.farmmanager.UpdateCropAvtivity;
 
 import java.util.List;
 
@@ -28,6 +31,12 @@ public class CropAdapter extends RecyclerView.Adapter<CropAdapter.myViewHolder> 
     @Override
     public void onBindViewHolder(myViewHolder holder, int position) {
         holder.textView.setText(crops.get(position));
+        holder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.getContext().startActivity(new Intent(v.getContext(), UpdateCropAvtivity.class));
+            }
+        });
     }
 
     @Override

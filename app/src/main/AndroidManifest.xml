@@ -18,10 +18,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".UpdateCropAvtivity"
+            android:label="@string/title_activity_update_crop_avtivity"
+            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
+        <activity
             android:name=".CalendarActivity"
             android:label="@string/title_activity_calendar"
-            android:theme="@style/Theme.FarmManager.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
         <activity
             android:name=".TransactionsActivity"
             android:label="@string/title_activity_transactions"
