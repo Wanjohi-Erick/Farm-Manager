@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.farmmanager.BillsActivity;
 import com.example.farmmanager.R;
 import com.example.farmmanager.RecordPurchasesActivity;
-import com.example.farmmanager.RecordSalesActivity;
-import com.example.farmmanager.SalaryActivity;
+import com.example.farmmanager.Salary;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -51,7 +50,7 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.MyView
                 break;
             case 2:
                 holder.placeHolder.setOnClickListener(v -> {
-                    Intent intent = new Intent(v.getContext(), SalaryActivity.class);
+                    Intent intent = new Intent(v.getContext(), Salary.class);
                     v.getContext().startActivity(intent);
                 });
                 break;

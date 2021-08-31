@@ -18,15 +18,23 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".UpdateCropAvtivity"
+            android:name=".UpdateLivestock"
+            android:label="@string/title_activity_update_livestock"
+            android:theme="@style/Theme.FarmManager.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CropsActivity" />
+        </activity>
+        <activity
+            android:name=".UpdateCrop"
             android:label="@string/title_activity_update_crop_avtivity"
-            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
+            android:theme="@style/Theme.FarmManager.NoActionBar" />
         <activity
             android:name=".CalendarActivity"
             android:label="@string/title_activity_calendar"
-            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
+            android:theme="@style/Theme.FarmManager.NoActionBar" />
         <activity
-            android:name=".TransactionsActivity"
+            android:name=".Transactions"
             android:label="@string/title_activity_transactions"
             android:theme="@style/Theme.FarmManager.NoActionBar" />
         <activity
@@ -38,7 +46,7 @@
             android:label="@string/title_activity_crops"
             android:theme="@style/Theme.FarmManager.NoActionBar" />
         <activity
-            android:name=".SalaryActivity"
+            android:name=".Salary"
             android:label="@string/title_activity_salary"
             android:theme="@style/Theme.FarmManager.NoActionBar" />
         <activity

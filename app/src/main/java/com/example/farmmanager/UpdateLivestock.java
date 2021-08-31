@@ -14,16 +14,18 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.farmmanager.databinding.ActivityTransactionsBinding;
+import com.example.farmmanager.databinding.ActivityUpdateLivestockBinding;
 
-public class TransactionsActivity extends AppCompatActivity {
+public class UpdateLivestock extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_transactions);
+        setContentView(R.layout.activity_update_livestock);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
     }
 }

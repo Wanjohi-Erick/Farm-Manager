@@ -49,5 +49,6 @@
     <string name="title_activity_transactions">TransactionsActivity</string>
     <string name="title_activity_calendar">CalendarActivity</string>
     <string name="title_activity_update_crop_avtivity">UpdateCropAvtivity</string>
+    <string name="title_activity_update_livestock">UpdateLivestock</string>
 
 </resources>

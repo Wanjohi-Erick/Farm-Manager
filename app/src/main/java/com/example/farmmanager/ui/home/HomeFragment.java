@@ -14,10 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.example.farmmanager.CropsActivity;
 import com.example.farmmanager.LivestockActivity;
 import com.example.farmmanager.R;
-import com.example.farmmanager.Revenue;
-import com.example.farmmanager.TransactionsActivity;
-import com.example.farmmanager.ui.crops.CropsFragmentBottomNav;
-import com.example.farmmanager.ui.livestock.LivestockFragmentBottomNav;
+import com.example.farmmanager.Transactions;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     CardView transactionsCardView, livestockCardView, cropsCardView, notificationsCardView, calendarCardView, settingsCardView;
@@ -44,7 +41,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         int ID = v.getId();
         switch (ID){
             case R.id.transactions_card_view:
-                startActivity(new Intent(getContext(), TransactionsActivity.class));
+                startActivity(new Intent(getContext(), Transactions.class));
                 break;
             case R.id.livestock_card_view:
                 startActivity(new Intent(getContext(), LivestockActivity.class));

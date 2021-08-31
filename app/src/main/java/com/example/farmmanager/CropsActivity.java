@@ -56,7 +56,7 @@ public class CropsActivity extends AppCompatActivity {
         allCropsRecycler.setLayoutManager(new LinearLayoutManager(this));
         list.add("Maize");
         list.add("Beans");
-        getListFromDatabase();
+        //getListFromDatabase();
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Please wait");
         progressDialog.show();

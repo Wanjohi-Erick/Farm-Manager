@@ -25,7 +25,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SalaryActivity extends AppCompatActivity {
+public class Salary extends AppCompatActivity {
     private EditText transactionIDEdit, particularsEdit, amountEdit;
     private Spinner farmActivitySpinner;
     private AlertDialog.Builder alertDialog;
@@ -34,7 +34,7 @@ public class SalaryActivity extends AppCompatActivity {
     String[] farm_activities_array;
     String particulars, farm_activity, transactionID, amount;
     String url = "http://192.168.1.108/FarmManager/recordSalary.php";
-    private static final String TAG = "SalaryActivity";
+    private static final String TAG = "Salary";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
