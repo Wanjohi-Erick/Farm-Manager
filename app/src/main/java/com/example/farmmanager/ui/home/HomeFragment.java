@@ -10,11 +10,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.farmmanager.CropsActivity;
 import com.example.farmmanager.LivestockActivity;
 import com.example.farmmanager.R;
 import com.example.farmmanager.Transactions;
+import com.example.farmmanager.ui.revenue.SectionsPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     CardView transactionsCardView, livestockCardView, cropsCardView, notificationsCardView, calendarCardView, settingsCardView;
@@ -33,6 +36,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         notificationsCardView.setOnClickListener(this);
         calendarCardView.setOnClickListener(this);
         settingsCardView.setOnClickListener(this);
+
+        com.example.farmmanager.ui.home.SectionsPagerAdapter sectionsPagerAdapter = new com.example.farmmanager.ui.home.SectionsPagerAdapter(getContext(), getFragmentManager());
+        ViewPager viewPager = root.findViewById(R.id.view_pagerWeatherNews);
+        viewPager.setAdapter(sectionsPagerAdapter);
+        TabLayout tabs = root.findViewById(R.id.tabsWeatherNews);
+        tabs.setupWithViewPager(viewPager);
         return root;
     }
 

@@ -38,6 +38,8 @@
     <string name="title_activity_revenue">Revenue</string>
     <string name="tab_expenses">Expenses</string>
     <string name="tab_income">Income</string>
+    <string name="tab_weather">Weather</string>
+    <string name="tab_news">News</string>
     <string name="title_activity_record_purchases">RecordPurchasesActivity</string>
     <string name="title_activity_bills">BillsActivity</string>
     <string name="title_activity_salary">SalaryActivity</string>
