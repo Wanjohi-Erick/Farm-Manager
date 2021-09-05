@@ -52,5 +52,7 @@
     <string name="title_activity_calendar">CalendarActivity</string>
     <string name="title_activity_update_crop_avtivity">UpdateCropAvtivity</string>
     <string name="title_activity_update_livestock">UpdateLivestock</string>
+    <string name="see_more">See More</string>
+    <string name="title_activity_news">News</string>
 
 </resources>

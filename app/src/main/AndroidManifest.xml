@@ -17,6 +17,11 @@
         android:theme="@style/Theme.FarmManager"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".Web"></activity>
+        <activity
+            android:name=".News"
+            android:label="@string/title_activity_news"
+            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
         <activity
             android:name=".UpdateLivestock"
             android:label="@string/title_activity_update_livestock"

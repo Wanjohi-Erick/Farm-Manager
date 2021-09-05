@@ -1,6 +1,8 @@
 package com.example.farmmanager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -35,4 +37,7 @@ public class LauncherActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
+    public void toNewsActivity(View view) {
+        startActivity(new Intent(this, News.class));
+    }
 }
