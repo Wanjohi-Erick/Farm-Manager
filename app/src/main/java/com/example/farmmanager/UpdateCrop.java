@@ -1,17 +1,22 @@
 package com.example.farmmanager;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -25,8 +30,12 @@ import com.android.volley.toolbox.Volley;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,8 +52,12 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
     Button updateRecordsBtn, updateTreatmentScheduleBtn;
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
+    Dialog treatmentDialog;
+    Dialog eventDialog;
     DatePickerDialog datePickerDialog;
     String urlToSave = "http://192.168.1.110/FarmManager/updateCropDetails.php";
+    private static final String TAG = "UpdateCrop";
+    DatePicker datePicker;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -65,6 +78,8 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
         treatment_spinner = findViewById(R.id.treatment_spinner);
         progressDialog = new ProgressDialog(this);
         alertDialog = new AlertDialog.Builder(this);
+        treatmentDialog = new Dialog(this);
+        eventDialog = new Dialog(this);
         datePickerDialog = new DatePickerDialog(this);
 
         //end of instantiation
@@ -119,7 +134,52 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
             progressDialog.show();
         } else if (v == findViewById(R.id.update_treatment_schedule_button)){
             //TODO Display dialog for calendarView to select treatment dates
-            datePickerDialog.show();
+            treatmentDialog.setContentView(R.layout.date_picker_view);
+            treatmentDialog.setCanceledOnTouchOutside(false);
+            treatmentDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            treatmentDialog.show();
+            datePicker = treatmentDialog.findViewById(R.id.datePicker);
+            TextView dismissBtn = treatmentDialog.findViewById(R.id.dialog_dismiss_btn);
+            datePicker.setOnDateChangedListener((view, year, monthOfYear, dayOfMonth) -> {
+                eventDialog.setContentView(R.layout.schedule_view);
+                eventDialog.setCanceledOnTouchOutside(false);
+                eventDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                eventDialog.show();
+                EditText eventName = eventDialog.findViewById(R.id.activity);
+                Button saveEventBtn = eventDialog.findViewById(R.id.saveEventBtn);
+                TextView startDate, endDate, startTime, endTime;
+                startDate = eventDialog.findViewById(R.id.date_view);
+                endDate = eventDialog.findViewById(R.id.end_date_view);
+                startTime = eventDialog.findViewById(R.id.time_view);
+                endTime = eventDialog.findViewById(R.id.end_time_view);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E, d-M-Y");
+                SimpleDateFormat timeFormat = new SimpleDateFormat("k:m");
+                Date date = Calendar.getInstance().getTime();
+                startDate.setText(simpleDateFormat.format(date));
+                endDate.setText(simpleDateFormat.format(date));
+                startTime.setText(timeFormat.format(date));
+                endTime.setText(timeFormat.format(date));
+                startDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        datePickerDialog.show();
+                        datePickerDialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                            }
+                        });
+                    }
+                });
+                saveEventBtn.setOnClickListener(v1 -> {
+                    String event = eventName.getText().toString();
+                    Log.d(TAG, "onClick: " + event);
+                    eventDialog.dismiss();
+                });
+            });
+            dismissBtn.setOnClickListener(v1 -> {
+                treatmentDialog.dismiss();
+            });
+
         }
     }
 
@@ -138,7 +198,7 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
                 alertDialog.setMessage(response);
                 feedback(response);
             }, error -> {
-                progressDialog.dismiss();
+                   progressDialog.dismiss();
                 alertDialog.setMessage("Server Error");
                 alertDialog.setMessage(error.getLocalizedMessage());
                 feedback("Server Error");
