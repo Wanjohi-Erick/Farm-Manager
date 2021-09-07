@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@drawable/layout_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Schedule for this Day"
+        android:layout_margin="@dimen/margin"
+        android:textSize="@dimen/title_size"
+        android:textStyle="bold"
+        android:fontFamily="cursive"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter activity"
+        android:layout_margin="@dimen/margin"
+        android:inputType="textCapWords"
+        android:id="@+id/activity"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_margin="@dimen/margin"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date_view"
+            android:layout_weight="1"
+            android:text="@string/title_plans"
+            android:textSize="@dimen/text_size"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginStart="@dimen/margin"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_view"
+            android:text="@string/see_more"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_size"
+            android:gravity="end"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_margin="@dimen/margin"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/end_date_view"
+            android:layout_weight="1"
+            android:text="@string/title_plans"
+            android:textSize="@dimen/text_size"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginStart="@dimen/margin"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/end_time_view"
+            android:text="@string/see_more"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_size"
+            android:gravity="end"/>
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:text="save"
+        android:id="@+id/saveEventBtn"/>
+
+
+</LinearLayout>
