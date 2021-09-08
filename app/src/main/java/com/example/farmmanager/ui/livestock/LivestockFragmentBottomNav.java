@@ -16,7 +16,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 public class LivestockFragmentBottomNav extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_livestock_bottom_nav, container, false);
+        View root = inflater.inflate(R.layout.fragment_reports_bottom_nav, container, false);
         GraphView graphView = root.findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
                 new DataPoint(1, 0),

@@ -21,7 +21,7 @@
         android:id="@+id/navigation_reports"
         android:name="com.example.farmmanager.ui.livestock.LivestockFragmentBottomNav"
         android:label="@string/title_reports"
-        tools:layout="@layout/fragment_livestock_bottom_nav" />
+        tools:layout="@layout/fragment_reports_bottom_nav" />
     <fragment
         android:id="@+id/navigation_plans"
         android:name="com.example.farmmanager.ui.account.AccountFragment"
