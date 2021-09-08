@@ -34,7 +34,7 @@ public class Transactions extends AppCompatActivity {
     TransactionsHistoryAdapter transactionsHistoryAdapter;
     private String get_transactions_from_db_url = "http://192.168.1.110/FarmManager/retrieveSales.php";
     private static final String TAG = "Transactions";
-    List<String> transactions = new ArrayList<>();
+    List<TransactionsList> transactions = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +62,6 @@ public class Transactions extends AppCompatActivity {
         transactionsRecycler.setLayoutManager(new LinearLayoutManager(this));
         transactionsRecycler.setHasFixedSize(false);
         getTransactionDetails();
-        transactionsHistoryAdapter = new TransactionsHistoryAdapter(transactions);
-        transactionsRecycler.setAdapter(transactionsHistoryAdapter);
     }
 
     private void getTransactionDetails() {
@@ -83,7 +81,11 @@ public class Transactions extends AppCompatActivity {
 
                     formattedResponse = date + ", " + particulars + ", " + commodity + ", " + quantity + ", " + price + ", " + transactionID + ", " + contact;
                     Log.d(TAG, "getTransactionDetails: " + formattedResponse);
-                    transactions.add(particulars);
+                    TransactionsList transactionsList = new TransactionsList(date, particulars, commodity, quantity, price, transactionID, contact);
+                    transactions.add(transactionsList);
+                    transactionsHistoryAdapter = new TransactionsHistoryAdapter(transactions);
+                    transactionsRecycler.setAdapter(transactionsHistoryAdapter);
+                    Log.d(TAG, "onCreate: " + transactions.size());
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
