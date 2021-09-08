@@ -11,12 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmmanager.R;
 import com.example.farmmanager.UpdateCrop;
+import com.example.farmmanager.models.CropsModel;
 
 import java.util.List;
 
 public class CropAdapter extends RecyclerView.Adapter<CropAdapter.myViewHolder> {
-    List<String> crops;
-    public CropAdapter(List<String> list) {
+    List<CropsModel> crops;
+    public CropAdapter(List<CropsModel> list) {
         this.crops = list;
     }
 
@@ -29,7 +30,7 @@ public class CropAdapter extends RecyclerView.Adapter<CropAdapter.myViewHolder> 
 
     @Override
     public void onBindViewHolder(myViewHolder holder, int position) {
-        holder.textView.setText(crops.get(position));
+        holder.textView.setText(crops.get(position).getCropName());
         holder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

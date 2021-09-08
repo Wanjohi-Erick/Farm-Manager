@@ -10,5 +10,5 @@
         android:textSize="@dimen/text_size"
         android:background="@drawable/custom_row_background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 </RelativeLayout>

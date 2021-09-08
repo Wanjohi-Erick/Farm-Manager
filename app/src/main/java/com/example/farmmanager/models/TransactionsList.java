@@ -1,4 +1,4 @@
-package com.example.farmmanager;
+package com.example.farmmanager.models;
 
 public class TransactionsList {
     String date, particulars, commodity, quantity, price, transactionID, contact;

@@ -16,6 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.farmmanager.adapters.CropAdapter;
+import com.example.farmmanager.models.CropsModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class CropsActivity extends AppCompatActivity {
     ViewSwitcher viewSwitcher;
     RecyclerView allCropsRecycler;
     CropAdapter cropAdapter;
-    List<String> list = new ArrayList<>();
+    List<CropsModel> list = new ArrayList<>();
     String urlToRetrieve = "http://192.168.1.110/FarmManager/retrieveAvailableCrops.php";
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
@@ -54,17 +55,10 @@ public class CropsActivity extends AppCompatActivity {
         //instantiating view end
         allCropsRecycler.setHasFixedSize(true);
         allCropsRecycler.setLayoutManager(new LinearLayoutManager(this));
-        list.add("Maize");
-        list.add("Beans");
-        //getListFromDatabase();
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Please wait");
         progressDialog.show();
-        cropAdapter = new CropAdapter(list);
-        allCropsRecycler.setAdapter(cropAdapter);
-        if (list.size() > 0){
-            viewSwitcher.showNext();
-        }
+        getListFromDatabase();
         fab.setOnClickListener(v -> addCrop());
     }
 
@@ -72,23 +66,19 @@ public class CropsActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, urlToRetrieve, response -> {
             progressDialog.dismiss();
             try {
-                Log.d(TAG, "getListFromDatabase: " + response);
-                JSONArray jsonArray = new JSONArray(response);
-                int length = jsonArray.length();
-
-                JSONObject jsonObject = jsonArray.getJSONObject(0);
-                String serverResponse = jsonObject.getString("serverResponse");
-                Log.d(TAG, "getListFromDatabase: "+ serverResponse);
-                if (serverResponse.equalsIgnoreCase("Success")){
-                    alertDialog.setTitle("title");
-                    alertDialog.setMessage("Length" + length);
-                    alertDialog.create();
-                    alertDialog.show();
-                } else {
-                    alertDialog.setTitle("Server Error");
-                    alertDialog.setMessage("Failed to retrieve");
-                    AlertDialog dialog = alertDialog.create();
-                    dialog.show();
+                JSONArray responseArray = new JSONArray(response);
+                for (int i = 0; i < responseArray.length(); i++){
+                    JSONObject details = responseArray.getJSONObject(i);
+                    String cropName = details.getString("name");
+                    String harvestUnits = details.getString("units");
+                    String landName = details.getString("land");
+                    CropsModel cropsModel = new CropsModel(cropName, harvestUnits, landName);
+                    list.add(cropsModel);
+                    cropAdapter = new CropAdapter(list);
+                    allCropsRecycler.setAdapter(cropAdapter);
+                }
+                if (list.size() > 0){
+                    viewSwitcher.showNext();
                 }
             }catch (JSONException e){
                 e.printStackTrace();

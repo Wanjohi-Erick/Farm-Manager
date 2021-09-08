@@ -40,4 +40,9 @@ public class LauncherActivity extends AppCompatActivity {
     public void toNewsActivity(View view) {
         startActivity(new Intent(this, News.class));
     }
+
+    public void toNavDrawer(View view) {
+        Intent intent = new Intent(this, RecordSalesActivity.class);
+        startActivity(intent);
+    }
 }

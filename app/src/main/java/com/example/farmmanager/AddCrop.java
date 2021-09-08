@@ -37,7 +37,7 @@ public class AddCrop extends AppCompatActivity implements View.OnClickListener {
     Button save;
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
-    String urlToSave = "http://10.0.2.2/FarmManager/recordCrops.php";
+    String urlToSave = "http://192.168.1.110/FarmManager/recordCrops.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmmanager.R;
-import com.example.farmmanager.TransactionsList;
+import com.example.farmmanager.models.TransactionsList;
 
 import org.jetbrains.annotations.NotNull;
 
