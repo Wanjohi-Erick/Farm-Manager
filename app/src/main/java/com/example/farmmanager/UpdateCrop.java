@@ -30,7 +30,6 @@ import com.android.volley.toolbox.Volley;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,12 +57,13 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
     String urlToSave = "http://192.168.1.110/FarmManager/updateCropDetails.php";
     private static final String TAG = "UpdateCrop";
     DatePicker datePicker;
+    String name, harvestUnits, land;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_crop_activity);
+        setContentView(R.layout.activity_update_crop);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -98,6 +98,20 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
         updateRecordsBtn.setOnClickListener(this);
         updateTreatmentScheduleBtn.setOnClickListener(this);
 
+        //From intent
+        Bundle bundle = getIntent().getExtras();
+        name = bundle.getString("name");
+        harvestUnits  = bundle.getString("harvestUnits");
+        land = bundle.getString("land");
+        cropNameEdit.setText(name);
+        for (int i = 0; i < harvest_units_list.size(); i++){
+            for (int j = 0; j < land_details_list.size(); j++){
+                if (harvest_units_list.get(i).equals(harvestUnits) && land_details_list.get(j).equals(land)){
+                    harvest_unit_spinner.setSelection(i);
+                    land_to_plant_spinner.setSelection(j);
+                }
+            }
+        }
     }
 
     @Override
@@ -128,6 +142,7 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
                     harvest_unit = "";
                 }
             });
+            yield = yieldEdit.getText().toString();
             updateDatabase(cropNameTxt, harvest_unit, land_details, treatment, yield);
             progressDialog.setTitle("Saving crop details");
             progressDialog.setMessage("Please wait...");

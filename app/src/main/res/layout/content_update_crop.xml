@@ -13,7 +13,7 @@
         android:id="@+id/crop_name"
         android:hint="Crop Name"
         android:textSize="@dimen/text_size"
-        android:layout_margin="@dimen/margin"
+        android:layout_marginTop="65dp"
         android:padding="@dimen/padding"
         android:background="@drawable/edit_text_background"/>
 
