@@ -33,7 +33,7 @@ public class Salary extends AppCompatActivity {
     RadioGroup paymentMethod;
     String[] farm_activities_array;
     String particulars, farm_activity, transactionID, amount;
-    String url = "http://192.168.1.108/FarmManager/recordSalary.php";
+    String url = "http://fmanager.agria.co.ke/recordSalary.php";
     private static final String TAG = "Salary";
 
     @Override

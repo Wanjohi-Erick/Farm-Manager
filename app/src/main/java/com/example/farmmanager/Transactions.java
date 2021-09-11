@@ -31,7 +31,7 @@ public class Transactions extends AppCompatActivity {
     private GraphView graphView;
     RecyclerView transactionsRecycler;
     TransactionsHistoryAdapter transactionsHistoryAdapter;
-    private String get_transactions_from_db_url = "http://192.168.1.110/FarmManager/retrieveSales.php";
+    private String get_transactions_from_db_url = "http://fmanager.agria.co.ke/retrieveSales.php";
     private static final String TAG = "Transactions";
     List<TransactionsList> transactions = new ArrayList<>();
 

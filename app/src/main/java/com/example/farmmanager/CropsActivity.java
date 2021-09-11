@@ -32,7 +32,7 @@ public class CropsActivity extends AppCompatActivity {
     RecyclerView allCropsRecycler;
     CropAdapter cropAdapter;
     List<CropsModel> list = new ArrayList<>();
-    String urlToRetrieve = "http://192.168.1.110/FarmManager/retrieveAvailableCrops.php";
+    String urlToRetrieve = "http://fmanager.agria.co.ke/FarmManager/retrieveAvailableCrops.php";
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
     private static final String TAG = "CropsFragmentBottomNav";

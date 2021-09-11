@@ -43,7 +43,7 @@ public class RecordSalesActivity extends AppCompatActivity {
     private AlertDialog.Builder alertDialog;
     private ProgressDialog progressDialog;
     private static final String TAG = "VolleyTag";
-    private final String recordSalesUrl = "http://192.168.1.110/FarmManager/recordSale.php";
+    private final String recordSalesUrl = "http://fmanager.agria.co.ke/recordSale.php";
     private String[] sale_items;
     private final int requestCode = 100;
     private Bitmap captureImage;
