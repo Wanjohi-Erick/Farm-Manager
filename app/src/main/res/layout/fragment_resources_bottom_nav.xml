@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/layout_background"
+    tools:context=".ui.bottomNavigation.ResourcesFragmentBottomNav">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/employees"
+        android:text="@string/employees"
+        android:textSize="@dimen/text_size"
+        android:padding="@dimen/padding"
+        android:layout_margin="@dimen/margin"
+        android:drawableLeft="@drawable/ic_baseline_particulars"
+        android:drawablePadding="@dimen/margin"
+        android:background="@drawable/edit_text_background"
+        android:drawableStart="@drawable/ic_baseline_particulars" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/inventory"
+        android:text="@string/inventory"
+        android:textSize="@dimen/text_size"
+        android:padding="@dimen/padding"
+        android:layout_margin="@dimen/margin"
+        android:drawableLeft="@drawable/ic_baseline_particulars"
+        android:drawablePadding="@dimen/margin"
+        android:background="@drawable/edit_text_background"
+        android:drawableStart="@drawable/ic_baseline_particulars" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fields"
+        android:text="@string/fields"
+        android:textSize="@dimen/text_size"
+        android:padding="@dimen/padding"
+        android:layout_margin="@dimen/margin"
+        android:drawableLeft="@drawable/ic_baseline_particulars"
+        android:drawablePadding="@dimen/margin"
+        android:background="@drawable/edit_text_background"
+        android:drawableStart="@drawable/ic_baseline_particulars" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/shelters"
+        android:text="@string/shelters"
+        android:textSize="@dimen/text_size"
+        android:padding="@dimen/padding"
+        android:layout_margin="@dimen/margin"
+        android:drawableLeft="@drawable/ic_baseline_particulars"
+        android:drawablePadding="@dimen/margin"
+        android:background="@drawable/edit_text_background"
+        android:drawableStart="@drawable/ic_baseline_particulars" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/storage"
+        android:text="@string/storage"
+        android:textSize="@dimen/text_size"
+        android:padding="@dimen/padding"
+        android:layout_margin="@dimen/margin"
+        android:drawableLeft="@drawable/ic_baseline_particulars"
+        android:drawablePadding="@dimen/margin"
+        android:background="@drawable/edit_text_background"
+        android:drawableStart="@drawable/ic_baseline_particulars" />
+
+</LinearLayout>

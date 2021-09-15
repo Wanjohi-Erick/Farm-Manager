@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_resources"
-        android:name="com.example.farmmanager.ui.crops.CropsFragmentBottomNav"
+        android:name="com.example.farmmanager.ui.bottomNavigation.ResourcesFragmentBottomNav"
         android:label="@string/title_resources"
-        tools:layout="@layout/fragment_crops_bottom_nav" />
+        tools:layout="@layout/fragment_resources_bottom_nav" />
 
     <fragment
         android:id="@+id/navigation_reports"
-        android:name="com.example.farmmanager.ui.livestock.LivestockFragmentBottomNav"
+        android:name="com.example.farmmanager.ui.bottomNavigation.LivestockFragmentBottomNav"
         android:label="@string/title_reports"
         tools:layout="@layout/fragment_reports_bottom_nav" />
     <fragment

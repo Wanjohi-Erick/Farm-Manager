@@ -1,8 +1,11 @@
 package com.example.farmmanager;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ViewSwitcher;
 
 import androidx.appcompat.app.AlertDialog;
@@ -14,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.farmmanager.adapters.CropAdapter;
-import com.example.farmmanager.models.CropsModel;
+import com.example.farmmanager.adapters.EmployeesAdapter;
+import com.example.farmmanager.models.EmployeesModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
@@ -25,13 +28,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CropsActivity extends AppCompatActivity {
+public class Employees extends AppCompatActivity {
+    private RecyclerView employeesRecycler;
+    private final List<EmployeesModel> employeeList = new ArrayList<>();
+    EmployeesAdapter employeesAdapter;
     FloatingActionButton fab;
     ViewSwitcher viewSwitcher;
-    RecyclerView allCropsRecycler;
-    CropAdapter cropAdapter;
-    List<CropsModel> list = new ArrayList<>();
-    String urlToRetrieve = "http://fmanager.agria.co.ke/retrieveAvailableCrops.php";
+    String urlToRetrieve = "http://192.168.43.2/farmmanager/retrieveEmployeeDetails.php";
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
 
@@ -39,43 +42,48 @@ public class CropsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_crops);
+        setContentView(R.layout.activity_employees);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         viewSwitcher = findViewById(R.id.view_switcher);
-        allCropsRecycler = findViewById(R.id.all_crops_recycler);
         fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AddEmployee.class));
+            }
+        });
         progressDialog = new ProgressDialog(this);
         alertDialog = new AlertDialog.Builder(this);
 
-        //instantiating view end
-        allCropsRecycler.setHasFixedSize(true);
-        allCropsRecycler.setLayoutManager(new LinearLayoutManager(this));
+        employeesRecycler = findViewById(R.id.employeeRecycler);
+        employeesRecycler.setHasFixedSize(false);
+        employeesRecycler.setLayoutManager(new LinearLayoutManager(this));
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Please wait");
         progressDialog.show();
-        getListFromDatabase();
-        fab.setOnClickListener(v -> addCrop());
+        getFromDatabase();
     }
 
-    private void getListFromDatabase() {
+    private void getFromDatabase() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, urlToRetrieve, response -> {
             progressDialog.dismiss();
             try {
                 JSONArray responseArray = new JSONArray(response);
                 for (int i = 0; i < responseArray.length(); i++){
                     JSONObject details = responseArray.getJSONObject(i);
-                    String cropName = details.getString("name");
-                    String harvestUnits = details.getString("units");
-                    String landName = details.getString("land");
-                    CropsModel cropsModel = new CropsModel(cropName, harvestUnits, landName);
-                    list.add(cropsModel);
-                    cropAdapter = new CropAdapter(list);
-                    allCropsRecycler.setAdapter(cropAdapter);
+                    String employeeName = details.getString("name");
+                    String employeeID = details.getString("employeeID");
+                    String employeeContact = details.getString("contact");
+                    String dateOfEmployment = details.getString("dateOfEmployment");
+                    EmployeesModel employeesModel = new EmployeesModel(employeeID, employeeName, employeeContact, dateOfEmployment);
+                    employeeList.add(employeesModel);
+                    employeesAdapter = new EmployeesAdapter(employeeList);
+                    employeesRecycler.setAdapter(employeesAdapter);
                 }
-                if (list.size() > 0){
+                if (employeeList.size() > 0){
                     viewSwitcher.showNext();
                 }
             }catch (JSONException e){
@@ -83,16 +91,18 @@ public class CropsActivity extends AppCompatActivity {
             }
         }, error -> {
             progressDialog.dismiss();
+            String message = error.getMessage();
             alertDialog.setTitle("Server Error");
-            alertDialog.setMessage(error.getLocalizedMessage());
+            if (message == null){
+                alertDialog.setMessage("Error from our side. Hold tight as we fix it");
+            }else {
+                alertDialog.setMessage(error.getLocalizedMessage());
+            }
+            alertDialog.setPositiveButton("Ok", (dialog, which) -> dialog.dismiss());
             AlertDialog dialog = alertDialog.create();
             dialog.show();
         });
         stringRequest.setShouldCache(false);
         Volley.newRequestQueue(this).add(stringRequest);
-    }
-
-    private void addCrop() {
-        startActivity(new Intent(this, AddCrop.class));
     }
 }

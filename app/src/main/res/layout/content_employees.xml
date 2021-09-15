@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.crops.CropsFragmentBottomNav">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <ViewSwitcher
         android:id="@+id/view_switcher"
@@ -15,16 +15,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="bottom"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/no_crop_added_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="200dp"
                 android:gravity="center_horizontal"
-                android:text="No crops added yet"
+                android:layout_margin="@dimen/margin"
+                android:text="@string/employee_absent_message"
                 android:textAlignment="center"
                 android:textSize="@dimen/text_size" />
 
@@ -36,17 +36,9 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/all_crops_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:id="@+id/fab"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_add"
-                android:layout_margin="@dimen/fab_margin"
-                android:layout_gravity="bottom|end"
-                android:contentDescription="Add crop" />
+                android:id="@+id/employeeRecycler"/>
         </LinearLayout>
     </ViewSwitcher>
 </LinearLayout>

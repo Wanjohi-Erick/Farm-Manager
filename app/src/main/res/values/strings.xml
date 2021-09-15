@@ -2,46 +2,21 @@
     <string name="app_name">Farm Manager</string>
     <string name="action_back">Back</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
-    <string name="menu_land">Land</string>
-    <string name="menu_shelter">Shelter</string>
     <string name="menu_title_livestock">Livestock</string>
     <string name="menu_crops">Crops</string>
-    <string name="menu_title_crops">Crops</string>
     <string name="title_activity_launcher">Farm Manager</string>
     <string name="title_home">Home</string>
-    <string name="title_crops">Crops</string>
-    <string name="title_animals">Animals</string>
-    <string name="title_account">Account</string>
 
-    <string name="profile">Profile</string>
-    <string name="social">Social Media <br /> Links</string>
-    <string name="invite">Invite</string>
-    <string name="news_weather">News &amp; <br /> Weather</string>
-    <string name="quick_access">Quick <br /> Access</string>
-    <string name="support">Help / <br /> Support</string>
-    <string name="menu_sales">Sales</string>
     <string name="sales_record">Sales Record</string>
     <string name="title_activity_revenue">Revenue</string>
     <string name="tab_expenses">Expenses</string>
     <string name="tab_income">Income</string>
     <string name="tab_weather">Weather</string>
     <string name="tab_news">News</string>
-    <string name="tab_incoming">Incoming</string>
-    <string name="tab_outgoing">Outgoing</string>
     <string name="title_activity_record_purchases">RecordPurchasesActivity</string>
     <string name="title_activity_bills">BillsActivity</string>
     <string name="title_activity_salary">SalaryActivity</string>
@@ -56,5 +31,20 @@
     <string name="title_activity_update_livestock">UpdateLivestock</string>
     <string name="see_more">See More</string>
     <string name="title_activity_news">News</string>
+    <string name="storage">Storage</string>
+    <string name="shelters">Shelters</string>
+    <string name="fields">Fields</string>
+    <string name="inventory">Inventory</string>
+    <string name="employees">Employees</string>
+    <string name="title_activity_employees">Employees</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="employee_absent_message">No employee data added yet. \n Click on the plus button below to add employee details</string>
+    <string name="title_activity_add_employee">AddEmployee</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.example.farmmanager.ui.livestock;
+package com.example.farmmanager.ui.bottomNavigation;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

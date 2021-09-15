@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="vet">
-        <item>Select vet service:-</item>
-        <item>De worming</item>
-        <item>Dehorning</item>
-        <item>Consultation</item>
-        <item>Castration</item>
-        <item>Teeth clipping</item>
-        <item>Tagging</item>
-    </string-array>
-</resources>
+<resources></resources>

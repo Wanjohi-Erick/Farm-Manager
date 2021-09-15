@@ -34,6 +34,7 @@ public class Transactions extends AppCompatActivity {
     private String get_transactions_from_db_url = "http://fmanager.agria.co.ke/retrieveSales.php";
     private static final String TAG = "Transactions";
     List<TransactionsList> transactions = new ArrayList<>();
+    DataPoint[] dataPoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +46,7 @@ public class Transactions extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         graphView = findViewById(R.id.graph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(1, 0),
-                new DataPoint(6, 300),
-                new DataPoint(11, 1300),
-                new DataPoint(19, 1500),
-                new DataPoint(20, 3060),
-                new DataPoint(25, 3605)
-        });
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataPoint);
         graphView.addSeries(series);
         graphView.setTitle("August summary");
 
@@ -85,6 +79,7 @@ public class Transactions extends AppCompatActivity {
                     transactionsHistoryAdapter = new TransactionsHistoryAdapter(transactions);
                     transactionsRecycler.setAdapter(transactionsHistoryAdapter);
                     Log.d(TAG, "onCreate: " + transactions.size());
+                    
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

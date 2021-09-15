@@ -34,7 +34,8 @@ public class TransactionsHistoryAdapter extends RecyclerView.Adapter<Transaction
         holder.particulars.setText(transactions.get(position).getParticulars());
         holder.time.setText(transactions.get(position).getDate());
         holder.contact.setText(transactions.get(position).getContact());
-        holder.price.setText(transactions.get(position).getPrice());
+        String money = "+Ksh. " + transactions.get(position).getPrice();
+        holder.price.setText(money);
     }
 
     @Override

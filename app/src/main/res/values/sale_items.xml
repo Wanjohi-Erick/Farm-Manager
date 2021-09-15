@@ -12,11 +12,4 @@
         <item>From Inventory</item>
     </string-array>
 
-    <string-array name="by_products">
-        <item>Select by-product:-</item>
-        <item>Manure</item>
-        <item>Skin</item>
-        <item>Slaughter Waste</item>
-        <item>Silage</item>
-    </string-array>
 </resources>

@@ -1,19 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="purchase_items">
-        <item>Select item purchased:-</item>
-        <item>Feeds</item>
-        <item>Fertilizers</item>
-        <item>Manure</item>
-        <item>Herbicides</item>
-        <item>Pesticides</item>
-        <item>Drugs</item>
-        <item>Construction materials</item>
-        <item>Hay</item>
-        <item>Equipment</item>
-        <item>Seeds</item>
-        <item>Seedlings</item>
-        <item>Gear</item>
-        <item>Animal</item>
-    </string-array>
-</resources>
+<resources></resources>

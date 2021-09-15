@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/layout_background"
+    tools:context=".AddEmployee">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Record Eployee Details"
+        android:textSize="@dimen/title_size"
+        android:layout_margin="@dimen/margin"
+        android:fontFamily="cursive"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/employee_id"
+        android:hint="Employee ID"
+        android:inputType="textCapCharacters"
+        android:textSize="@dimen/text_size"
+        android:layout_margin="@dimen/margin"
+        android:padding="@dimen/padding"
+        android:background="@drawable/edit_text_background"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/employee_name"
+        android:hint="Employee Name"
+        android:textSize="@dimen/text_size"
+        android:layout_margin="@dimen/margin"
+        android:padding="@dimen/padding"
+        android:inputType="textPersonName|textCapWords"
+        android:background="@drawable/edit_text_background"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/employee_contact"
+        android:hint="Employee contact"
+        android:textSize="@dimen/text_size"
+        android:layout_margin="@dimen/margin"
+        android:padding="@dimen/padding"
+        android:inputType="number"
+        android:background="@drawable/edit_text_background"/>
+
+    <Button
+        android:id="@+id/save_employee_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:text="Save"
+        android:layout_margin="@dimen/margin"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>

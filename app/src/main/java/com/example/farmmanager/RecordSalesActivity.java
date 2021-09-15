@@ -176,12 +176,6 @@ public class RecordSalesActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void toHome(View view) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
     public void recordSales(View view) {
         if (!internetConnectivity.isConnected(this)){
             alertDialog.setTitle("No Internet connection");
