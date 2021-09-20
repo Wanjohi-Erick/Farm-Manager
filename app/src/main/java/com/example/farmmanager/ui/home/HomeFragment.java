@@ -17,7 +17,14 @@ import com.example.farmmanager.LivestockActivity;
 import com.example.farmmanager.R;
 import com.example.farmmanager.Transactions;
 import com.example.farmmanager.ui.revenue.SectionsPagerAdapter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.tabs.TabLayout;
+
+import org.jetbrains.annotations.NotNull;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     CardView transactionsCardView, livestockCardView, cropsCardView, notificationsCardView, calendarCardView, settingsCardView;
@@ -42,6 +49,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = root.findViewById(R.id.tabsWeatherNews);
         tabs.setupWithViewPager(viewPager);
+
         return root;
     }
 

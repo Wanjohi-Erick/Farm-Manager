@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_reports"
-        android:name="com.example.farmmanager.ui.bottomNavigation.LivestockFragmentBottomNav"
+        android:name="com.example.farmmanager.ui.bottomNavigation.ReportsFragmentBottomNav"
         android:label="@string/title_reports"
         tools:layout="@layout/fragment_reports_bottom_nav" />
     <fragment

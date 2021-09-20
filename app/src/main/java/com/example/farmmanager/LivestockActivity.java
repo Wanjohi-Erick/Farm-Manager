@@ -34,7 +34,7 @@ public class LivestockActivity extends AppCompatActivity {
     String urlToRetrieve = "http://fmanager.agria.co.ke/retrieveAvailableLiveStock.php";
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
-    private static final String TAG = "LivestockFragmentBottomNav";
+    private static final String TAG = "ReportsFragmentBottomNav";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
