@@ -34,7 +34,7 @@ public class Employees extends AppCompatActivity {
     EmployeesAdapter employeesAdapter;
     FloatingActionButton fab;
     ViewSwitcher viewSwitcher;
-    String urlToRetrieve = "http://192.168.43.2/farmmanager/retrieveEmployeeDetails.php";
+    String urlToRetrieve = "http://192.168.1.110/farmmanager/retrieveEmployeeDetails.php";
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
 
@@ -49,12 +49,7 @@ public class Employees extends AppCompatActivity {
 
         viewSwitcher = findViewById(R.id.view_switcher);
         fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AddEmployee.class));
-            }
-        });
+        fab.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), AddEmployee.class)));
         progressDialog = new ProgressDialog(this);
         alertDialog = new AlertDialog.Builder(this);
 

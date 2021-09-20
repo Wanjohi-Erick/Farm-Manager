@@ -31,7 +31,7 @@ public class LivestockActivity extends AppCompatActivity {
     RecyclerView allLivestockRecycler;
     LIvestockAdapter livestockAdapter;
     List<LivestockModel> list = new ArrayList<>();
-    String urlToRetrieve = "http://fmanager.agria.co.ke/retrieveAvailableCrops.php";
+    String urlToRetrieve = "http://fmanager.agria.co.ke/retrieveAvailableLiveStock.php";
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
     private static final String TAG = "LivestockFragmentBottomNav";

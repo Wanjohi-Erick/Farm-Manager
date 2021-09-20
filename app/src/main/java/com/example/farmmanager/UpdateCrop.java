@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -47,16 +48,16 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
     List<String> land_details_list = new ArrayList<>();
     Spinner harvest_unit_spinner, land_to_plant_spinner, treatment_spinner;
     EditText cropNameEdit, yieldEdit;
-    String cropNameTxt, harvest_unit, land_details, treatment, yield;
+    String cropNameTxt, harvest_unit, land_details, activity, yield, startDate, endDate, startTime, endTime;
     Button updateRecordsBtn, updateTreatmentScheduleBtn;
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
     Dialog treatmentDialog;
     Dialog eventDialog;
     DatePickerDialog datePickerDialog;
-    String urlToSave = "http://fmanager.agria.co.ke/updateCropDetails.php";
+    String urlToSave = "http://192.168.1.110/farmmanager/updateCropDetails.php";
     private static final String TAG = "UpdateCrop";
-    DatePicker datePicker;
+    CalendarView calendarView;
     String name, harvestUnits, land;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -112,6 +113,58 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
                 }
             }
         }
+
+        updateTreatmentScheduleBtn.setOnClickListener(v -> {
+            //TODO Display dialog for calendarView to select treatment dates
+            treatmentDialog.setContentView(R.layout.date_picker_view);
+            treatmentDialog.setCanceledOnTouchOutside(false);
+            treatmentDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            treatmentDialog.show();
+            calendarView = treatmentDialog.findViewById(R.id.datePicker);
+            TextView dismissBtn = treatmentDialog.findViewById(R.id.dialog_dismiss_btn);
+            calendarView.setOnDateChangeListener((view, year, monthOfYear, dayOfMonth) -> {
+                eventDialog.setContentView(R.layout.schedule_view);
+                eventDialog.setCanceledOnTouchOutside(false);
+                eventDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                eventDialog.show();
+                EditText eventName = eventDialog.findViewById(R.id.activity);
+                Button saveEventBtn = eventDialog.findViewById(R.id.saveEventBtn);
+                TextView startDateView, endDateView, startTimeView, endTimeView;
+                startDateView = eventDialog.findViewById(R.id.date_view);
+                endDateView = eventDialog.findViewById(R.id.end_date_view);
+                startTimeView = eventDialog.findViewById(R.id.time_view);
+                endTimeView = eventDialog.findViewById(R.id.end_time_view);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E, d-M-Y");
+                SimpleDateFormat timeFormat = new SimpleDateFormat("k:m");
+                Date date = Calendar.getInstance().getTime();
+                startDate = simpleDateFormat.format(date);
+                endDate = simpleDateFormat.format(date);
+                startTime = timeFormat.format(date);
+                endTime = timeFormat.format(date);
+                startDateView.setText(startDate);
+                endDateView.setText(endDate);
+                startTimeView.setText(startTime);
+                endTimeView.setText(endTime);
+                startDateView.setOnClickListener(v12 -> {
+                    datePickerDialog.getDatePicker().updateDate(2020, 12, 25);
+                    datePickerDialog.show();
+                    datePickerDialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view1, int year1, int month, int dayOfMonth1) {
+                            startDateView.setText(dayOfMonth1+"-"+month+"-"+year1);
+                        }
+                    });
+                });
+                saveEventBtn.setOnClickListener(v1 -> {
+                    activity = eventName.getText().toString();
+                    startDate = startDateView.getText().toString();
+                    eventDialog.dismiss();
+                });
+            });
+            dismissBtn.setOnClickListener(v1 -> {
+                treatmentDialog.dismiss();
+            });
+        });
     }
 
     @Override
@@ -126,7 +179,7 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
 
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
-                    harvest_unit = "";
+                    harvest_unit = String.valueOf(parent.getSelectedItem());
                 }
             });
             // TODO: 25/06/2021 handle the null response from views
@@ -139,66 +192,18 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
 
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
-                    harvest_unit = "";
+                    harvest_unit  = String.valueOf(parent.getSelectedItem());
                 }
             });
             yield = yieldEdit.getText().toString();
-            updateDatabase(cropNameTxt, harvest_unit, land_details, treatment, yield);
+            updateDatabase(cropNameTxt, harvest_unit, land_details, activity, yield, startDate);
             progressDialog.setTitle("Saving crop details");
             progressDialog.setMessage("Please wait...");
             progressDialog.show();
-        } else if (v == findViewById(R.id.update_treatment_schedule_button)){
-            //TODO Display dialog for calendarView to select treatment dates
-            treatmentDialog.setContentView(R.layout.date_picker_view);
-            treatmentDialog.setCanceledOnTouchOutside(false);
-            treatmentDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            treatmentDialog.show();
-            datePicker = treatmentDialog.findViewById(R.id.datePicker);
-            TextView dismissBtn = treatmentDialog.findViewById(R.id.dialog_dismiss_btn);
-            datePicker.setOnDateChangedListener((view, year, monthOfYear, dayOfMonth) -> {
-                eventDialog.setContentView(R.layout.schedule_view);
-                eventDialog.setCanceledOnTouchOutside(false);
-                eventDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                eventDialog.show();
-                EditText eventName = eventDialog.findViewById(R.id.activity);
-                Button saveEventBtn = eventDialog.findViewById(R.id.saveEventBtn);
-                TextView startDate, endDate, startTime, endTime;
-                startDate = eventDialog.findViewById(R.id.date_view);
-                endDate = eventDialog.findViewById(R.id.end_date_view);
-                startTime = eventDialog.findViewById(R.id.time_view);
-                endTime = eventDialog.findViewById(R.id.end_time_view);
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E, d-M-Y");
-                SimpleDateFormat timeFormat = new SimpleDateFormat("k:m");
-                Date date = Calendar.getInstance().getTime();
-                startDate.setText(simpleDateFormat.format(date));
-                endDate.setText(simpleDateFormat.format(date));
-                startTime.setText(timeFormat.format(date));
-                endTime.setText(timeFormat.format(date));
-                startDate.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        datePickerDialog.show();
-                        datePickerDialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                            }
-                        });
-                    }
-                });
-                saveEventBtn.setOnClickListener(v1 -> {
-                    String event = eventName.getText().toString();
-                    Log.d(TAG, "onClick: " + event);
-                    eventDialog.dismiss();
-                });
-            });
-            dismissBtn.setOnClickListener(v1 -> {
-                treatmentDialog.dismiss();
-            });
-
         }
     }
 
-    private void updateDatabase(String cropNameTxt, String unit, String land_details, String treatment, String yield) {
+    private void updateDatabase(String cropNameTxt, String unit, String land_details, String activity, String yield, String startDate) {
         InternetConnectivity internetConnectivity = new InternetConnectivity();
         if (!internetConnectivity.isConnected(this)){
             alertDialog.setTitle("No internet connection");
@@ -226,8 +231,10 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
                     cropDetails.put("name", cropNameTxt);
                     cropDetails.put("units", unit);
                     cropDetails.put("land", land_details);
-                    cropDetails.put("treatment", treatment);
+                    cropDetails.put("activity", activity);
                     cropDetails.put("yield", yield);
+                    cropDetails.put("treatmentDate", startDate);
+                    cropDetails.put("yieldDate", endDate);
                     return cropDetails;
                 }
             };
@@ -242,7 +249,6 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
                 Toast.makeText(this, "Successfully saved", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(UpdateCrop.this, "ERROR", Toast.LENGTH_SHORT).show();
-                cropNameEdit.setText("");
             }
         });
         AlertDialog dialog = alertDialog.create();

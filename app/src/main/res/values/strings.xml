@@ -46,5 +46,7 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="employee_absent_message">No employee data added yet. \n Click on the plus button below to add employee details</string>
     <string name="title_activity_add_employee">AddEmployee</string>
+    <string name="title_activity_update_employee">UpdateEmployee</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 </resources>

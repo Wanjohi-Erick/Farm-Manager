@@ -71,7 +71,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update treatment schedule"
+        android:text="Update crop schedule"
         android:layout_gravity="center_horizontal"
         android:id="@+id/update_treatment_schedule_button"/>
 

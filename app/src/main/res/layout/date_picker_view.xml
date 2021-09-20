@@ -6,10 +6,10 @@
     android:background="@drawable/layout_background"
     android:layout_height="match_parent">
 
-    <DatePicker
+    <CalendarView
+        android:layout_width="400dp"
+        android:layout_height="400dp"
         android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
         android:layout_marginEnd="53dp"
         android:layout_marginRight="53dp"
@@ -17,7 +17,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
 
     <TextView
         android:id="@+id/dialog_dismiss_btn"
