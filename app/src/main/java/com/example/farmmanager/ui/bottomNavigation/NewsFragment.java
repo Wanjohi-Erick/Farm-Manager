@@ -1,4 +1,4 @@
-package com.example.farmmanager.ui.home;
+package com.example.farmmanager.ui.bottomNavigation;
 
 import android.os.Bundle;
 import android.util.Log;

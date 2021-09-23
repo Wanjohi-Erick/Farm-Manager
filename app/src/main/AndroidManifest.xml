@@ -27,6 +27,12 @@
 
         </activity>
         <activity
+            android:name=".NavigationDrawerActivity"
+            android:label="@string/title_activity_update_employee"
+            android:theme="@style/Theme.FarmManager.NoActionBar">
+
+        </activity>
+        <activity
             android:name=".AddEmployee"
             android:label="@string/title_activity_add_employee"
             android:theme="@style/Theme.FarmManager.NoActionBar">

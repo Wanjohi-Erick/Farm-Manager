@@ -1,4 +1,4 @@
-package com.example.farmmanager.ui.home;
+package com.example.farmmanager.ui.bottomNavigation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,17 +16,9 @@ import com.example.farmmanager.CropsActivity;
 import com.example.farmmanager.LivestockActivity;
 import com.example.farmmanager.R;
 import com.example.farmmanager.Transactions;
-import com.example.farmmanager.ui.revenue.SectionsPagerAdapter;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.tabs.TabLayout;
 
-import org.jetbrains.annotations.NotNull;
-
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragmentBottomNav extends Fragment implements View.OnClickListener {
     CardView transactionsCardView, livestockCardView, cropsCardView, notificationsCardView, calendarCardView, settingsCardView;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -44,7 +36,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         calendarCardView.setOnClickListener(this);
         settingsCardView.setOnClickListener(this);
 
-        com.example.farmmanager.ui.home.SectionsPagerAdapter sectionsPagerAdapter = new com.example.farmmanager.ui.home.SectionsPagerAdapter(getContext(), getFragmentManager());
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getContext(), getFragmentManager());
         ViewPager viewPager = root.findViewById(R.id.view_pagerWeatherNews);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = root.findViewById(R.id.tabsWeatherNews);

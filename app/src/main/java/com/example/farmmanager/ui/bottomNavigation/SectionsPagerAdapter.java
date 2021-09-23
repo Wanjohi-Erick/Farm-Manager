@@ -1,4 +1,4 @@
-package com.example.farmmanager.ui.home;
+package com.example.farmmanager.ui.bottomNavigation;
 
 import android.content.Context;
 
@@ -9,8 +9,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.farmmanager.R;
-import com.example.farmmanager.ui.revenue.ExpensesFragment;
-import com.example.farmmanager.ui.revenue.IncomeFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

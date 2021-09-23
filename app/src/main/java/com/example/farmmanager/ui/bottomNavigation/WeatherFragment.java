@@ -1,4 +1,4 @@
-package com.example.farmmanager.ui.home;
+package com.example.farmmanager.ui.bottomNavigation;
 
 import android.graphics.Color;
 import android.os.Bundle;

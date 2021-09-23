@@ -61,7 +61,7 @@ public class LauncherActivity extends AppCompatActivity {
     }
 
     public void toNavDrawer(View view) {
-        Intent intent = new Intent(this, RecordSalesActivity.class);
+        Intent intent = new Intent(this, NavigationDrawerActivity.class);
         startActivity(intent);
     }
 }
