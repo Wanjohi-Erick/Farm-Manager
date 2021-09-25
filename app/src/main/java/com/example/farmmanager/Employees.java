@@ -34,7 +34,7 @@ public class Employees extends AppCompatActivity {
     EmployeesAdapter employeesAdapter;
     FloatingActionButton fab;
     ViewSwitcher viewSwitcher;
-    String urlToRetrieve = "http://192.168.1.110/farmmanager/retrieveEmployeeDetails.php";
+    String urlToRetrieve = "http://fmanager.agria.co.ke/retrieveEmployeeDetails.php";
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
 

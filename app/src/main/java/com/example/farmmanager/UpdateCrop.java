@@ -55,7 +55,7 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
     Dialog treatmentDialog;
     Dialog eventDialog;
     DatePickerDialog datePickerDialog;
-    String urlToSave = "http://192.168.1.110/farmmanager/updateCropDetails.php";
+    String urlToSave = "http://fmarnager.agria.co.ke/updateCropDetails.php";
     private static final String TAG = "UpdateCrop";
     CalendarView calendarView;
     String name, harvestUnits, land;

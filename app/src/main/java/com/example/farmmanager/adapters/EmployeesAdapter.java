@@ -46,7 +46,7 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.MyVi
                 Intent intent = new Intent(holder.itemView.getContext(), UpdateEmployee.class);
                 intent.putExtra("name", name);
                 intent.putExtra("id", id);
-                intent.putExtra("Contact", contact);
+                intent.putExtra("contact", contact);
                 holder.itemView.getContext().startActivity(intent);
             }
         });

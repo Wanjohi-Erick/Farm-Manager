@@ -22,4 +22,28 @@
         android:name="com.example.farmmanager.ui.about.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/nav_learn"
+        android:name="com.example.farmmanager.ui.settings.SettingsFragment"
+        android:label="@string/learn"
+        tools:layout="@layout/fragment_learn" />
+
+    <fragment
+        android:id="@+id/nav_demos"
+        android:name="com.example.farmmanager.ui.support.SupportFragment"
+        android:label="@string/demos"
+        tools:layout="@layout/fragment_demos" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.example.farmmanager.ui.about.AboutFragment"
+        android:label="@string/share"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_social"
+        android:name="com.example.farmmanager.ui.about.AboutFragment"
+        android:label="@string/social_links"
+        tools:layout="@layout/fragment_social_links" />
 </navigation>
