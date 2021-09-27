@@ -34,7 +34,8 @@ public class Transactions extends AppCompatActivity {
     private String get_transactions_from_db_url = "http://fmanager.agria.co.ke/retrieveSales.php";
     private static final String TAG = "Transactions";
     List<TransactionsList> transactions = new ArrayList<>();
-    DataPoint[] dataPoint;
+    List<DataPoint> dataPoint = new ArrayList<>();
+    int price, i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +47,6 @@ public class Transactions extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         graphView = findViewById(R.id.graph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataPoint);
-        graphView.addSeries(series);
         graphView.setTitle("August summary");
 
         transactionsRecycler = findViewById(R.id.transactions_recycler);
@@ -62,25 +61,30 @@ public class Transactions extends AppCompatActivity {
             String formattedResponse = "";
             try {
                 JSONArray transactionsDetails = new JSONArray(response);
-                for (int i = 0; i <= transactionsDetails.length(); i++){
+                for (i = 0; i <= transactionsDetails.length(); i++){
                     JSONObject jsonObject = transactionsDetails.getJSONObject(i);
                     String date = jsonObject.getString("date");
                     String particulars = jsonObject.getString("particulars");
                     String commodity = jsonObject.getString("commodity");
                     String quantity = jsonObject.getString("quantity");
-                    String price = jsonObject.getString("price");
+                    String priceStr = jsonObject.getString("price");
                     String transactionID = jsonObject.getString("transactionID");
                     String contact = jsonObject.getString("contact");
+                    price = Integer.parseInt(priceStr);
+                    dataPoint.add(new DataPoint(i, price));
+                    Log.d(TAG, "getTransactionDetails: " + dataPoint.get(i).toString());
 
-                    formattedResponse = date + ", " + particulars + ", " + commodity + ", " + quantity + ", " + price + ", " + transactionID + ", " + contact;
+                    formattedResponse = date + ", " + particulars + ", " + commodity + ", " + quantity + ", " + priceStr + ", " + transactionID + ", " + contact;
                     Log.d(TAG, "getTransactionDetails: " + formattedResponse);
-                    TransactionsList transactionsList = new TransactionsList(date, particulars, commodity, quantity, price, transactionID, contact);
+                    TransactionsList transactionsList = new TransactionsList(date, particulars, commodity, quantity, priceStr, transactionID, contact);
                     transactions.add(transactionsList);
                     transactionsHistoryAdapter = new TransactionsHistoryAdapter(transactions);
                     transactionsRecycler.setAdapter(transactionsHistoryAdapter);
                     Log.d(TAG, "onCreate: " + transactions.size());
                     
                 }
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataPoint.toArray(new DataPoint[0]));
+                graphView.addSeries(series);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

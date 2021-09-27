@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.farmmanager.CalendarActivity;
 import com.example.farmmanager.CropsActivity;
 import com.example.farmmanager.LivestockActivity;
 import com.example.farmmanager.R;
@@ -48,18 +49,18 @@ public class HomeFragmentBottomNav extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         int ID = v.getId();
-        switch (ID){
-            case R.id.transactions_card_view:
-                startActivity(new Intent(getContext(), Transactions.class));
-                break;
-            case R.id.livestock_card_view:
-                startActivity(new Intent(getContext(), LivestockActivity.class));
-                break;
-            case R.id.crops_card_view:
-                startActivity(new Intent(getContext(), CropsActivity.class));
-                break;
-            default:
-                Toast.makeText(getContext(), "No Set Action", Toast.LENGTH_SHORT).show();
+        if (ID == R.id.transactions_card_view){
+            startActivity(new Intent(getContext(), Transactions.class));
+        } else if (ID == R.id.livestock_card_view){
+            startActivity(new Intent(getContext(), LivestockActivity.class));
+        } else if (ID == R.id.crops_card_view){
+            startActivity(new Intent(getContext(), CropsActivity.class));
+        } else if (ID == R.id.notifications_card_view){
+            startActivity(new Intent(getContext(), LivestockActivity.class));
+        } else if (ID == R.id.calendar_card_view){
+            startActivity(new Intent(getContext(), CalendarActivity.class));
+        } else if (ID == R.id.settings_card_view){
+            startActivity(new Intent(getContext(), LivestockActivity.class));
         }
     }
 }

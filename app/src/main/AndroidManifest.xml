@@ -17,27 +17,27 @@
         android:theme="@style/Theme.FarmManager"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity
+            android:name=".Inventory"
+            android:label="@string/title_activity_inventory"
+            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-6422900133345054~1726445480"/>
+            android:value="ca-app-pub-6422900133345054~1726445480" />
+
         <activity
             android:name=".UpdateEmployee"
             android:label="@string/title_activity_update_employee"
-            android:theme="@style/Theme.FarmManager.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
         <activity
             android:name=".NavigationDrawerActivity"
             android:label="@string/title_activity_update_employee"
-            android:theme="@style/Theme.FarmManager.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
         <activity
             android:name=".AddEmployee"
             android:label="@string/title_activity_add_employee"
-            android:theme="@style/Theme.FarmManager.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
         <activity
             android:name=".Employees"
             android:label="@string/title_activity_employees"

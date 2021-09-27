@@ -62,5 +62,6 @@
     <string name="share">Share</string>
     <string name="demos">Demos</string>
     <string name="learn">Learn</string>
+    <string name="title_activity_inventory">Inventory</string>
 
 </resources>

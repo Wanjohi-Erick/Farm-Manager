@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.farmmanager.Employees;
+import com.example.farmmanager.Inventory;
 import com.example.farmmanager.R;
 
 public class ResourcesFragmentBottomNav extends Fragment implements View.OnClickListener {
@@ -41,6 +42,8 @@ public class ResourcesFragmentBottomNav extends Fragment implements View.OnClick
         if (v.getId() == R.id.employees){
             Intent toActivityIntent = new Intent(this.getContext(), Employees.class);
             startActivity(toActivityIntent);
+        }else if (v.getId() == R.id.inventory){
+            Intent intent = new Intent(this.getContext(), Inventory.class);
         }
     }
 }
