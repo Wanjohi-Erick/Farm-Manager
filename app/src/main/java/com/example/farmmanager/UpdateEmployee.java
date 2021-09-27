@@ -1,22 +1,13 @@
 package com.example.farmmanager;
 
 import android.os.Bundle;
+import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
-import android.widget.EditText;
-
-import androidx.appcompat.widget.Toolbar;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.farmmanager.databinding.ActivityUpdateEmployeeBinding;
 
 public class UpdateEmployee extends AppCompatActivity {
     EditText name, id, contact;
