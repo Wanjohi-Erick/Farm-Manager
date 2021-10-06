@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="inventory_item_categories">
+        <item>Feeds</item>
+        <item>Drugs</item>
+        <item>Fertilizer</item>
+        <item>Seeds</item>
+        <item>Farm Produce</item>
+        <item>Equipment</item>
+        <item>Construction Items</item>
+    </string-array>
+</resources>

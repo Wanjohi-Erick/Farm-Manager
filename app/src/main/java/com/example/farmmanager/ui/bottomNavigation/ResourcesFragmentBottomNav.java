@@ -44,6 +44,7 @@ public class ResourcesFragmentBottomNav extends Fragment implements View.OnClick
             startActivity(toActivityIntent);
         }else if (v.getId() == R.id.inventory){
             Intent intent = new Intent(this.getContext(), Inventory.class);
+            startActivity(intent);
         }
     }
 }

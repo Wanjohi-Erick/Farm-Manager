@@ -8,7 +8,7 @@
         android:padding="@dimen/padding"
         android:layout_margin="@dimen/margin"
         android:textSize="@dimen/text_size"
-        android:background="@drawable/custom_row_background"
+        android:background="#f0f0f0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </RelativeLayout>
