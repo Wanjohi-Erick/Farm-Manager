@@ -3,8 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.farmmanager.RecordSalesActivity">
     <item
-        android:id="@+id/action_back"
+        android:id="@+id/action_record_sale"
         android:orderInCategory="100"
-        android:title="@string/action_back"
-        app:showAsAction="never" />
+        android:title="@string/record_sale"
+        android:icon="@mipmap/sale"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_record_purchase"
+        android:orderInCategory="100"
+        android:icon="@mipmap/checklist"
+        android:title="@string/record_purchase"
+        app:showAsAction="ifRoom" />
 </menu>

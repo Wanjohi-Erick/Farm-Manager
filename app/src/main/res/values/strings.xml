@@ -64,5 +64,7 @@
     <string name="learn">Learn</string>
     <string name="title_activity_inventory">Inventory</string>
     <string name="title_activity_feeds">Feeds</string>
+    <string name="record_purchase">Purchases</string>
+    <string name="record_sale">Record Sale</string>
 
 </resources>
