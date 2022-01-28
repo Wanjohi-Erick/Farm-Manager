@@ -66,5 +66,18 @@
     <string name="title_activity_feeds">Feeds</string>
     <string name="record_purchase">Purchases</string>
     <string name="record_sale">Record Sale</string>
+    <string name="login">Login</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="registration">Registration</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="register">Register</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="confirm_your_password">Confirm your password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="enter_the_name_of_your_farm">Enter the name of your farm</string>
 
 </resources>

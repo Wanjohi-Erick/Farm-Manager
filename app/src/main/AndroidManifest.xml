@@ -18,9 +18,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".Registration"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Feeds"
             android:label="@string/title_activity_feeds"
-            android:theme="@style/Theme.FarmManager.NoActionBar"></activity>
+            android:theme="@style/Theme.FarmManager.NoActionBar" />
         <activity
             android:name=".Inventory"
             android:label="@string/title_activity_inventory"
