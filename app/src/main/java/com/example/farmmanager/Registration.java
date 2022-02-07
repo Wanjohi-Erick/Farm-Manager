@@ -23,7 +23,7 @@ import java.util.Map;
 public class Registration extends AppCompatActivity {
     private EditText firstNameEdit, lastNameEdit, emailEdit, phoneEdit, farmNameEdit, passEdit, confirmPassEdit;
     private String firstName, lastName, email, phone, farmName, password, confirmPassword;
-    private final String registration_url = "http://192.168.0.108/FarmManager/registration.php";
+    private final String registration_url = "http://fmanager.agria.co.ke/registration.php";
     Button registrationBtn;
     AlertDialog.Builder dialogBuilder;
     ProgressDialog progressDialog;
@@ -34,7 +34,7 @@ public class Registration extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
         firstNameEdit = findViewById(R.id.first_name_edit);
         lastNameEdit = findViewById(R.id.last_name_edit);
-        emailEdit = findViewById(R.id.email_edit);
+        emailEdit = findViewById(R.id.phone_edit1);
         phoneEdit = findViewById(R.id.phone_edit);
         farmNameEdit = findViewById(R.id.farm_name_edit);
         passEdit = findViewById(R.id.password_edit);
@@ -74,6 +74,9 @@ public class Registration extends AppCompatActivity {
                     farmNameEdit.setText("");
                     passEdit.setText("");
                     confirmPassEdit.setText("");
+
+                    startActivity(new Intent(this, Login.class));
+                    finish();
                 }
             });
             AlertDialog alertDialog = dialogBuilder.create();

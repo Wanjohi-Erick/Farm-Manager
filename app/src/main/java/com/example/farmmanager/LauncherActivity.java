@@ -2,7 +2,9 @@ package com.example.farmmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -25,10 +27,17 @@ public class LauncherActivity extends AppCompatActivity {
     private static final String TAG = "LauncherActivity";
     public AdView adView;
     public AdRequest adRequest;
+    public String username, farmName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle bundle = getIntent().getExtras();
+        username = bundle.getString("firstName");
+        farmName = bundle.getString("farmName");
+        Log.i(TAG, "onCreate: " + username);
+
 
         setContentView(R.layout.activity_launcher);
         Objects.requireNonNull(getSupportActionBar()).hide();

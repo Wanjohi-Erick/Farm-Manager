@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,11 +27,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Login extends AppCompatActivity {
-    private EditText emailEdit, passwordEdit;
-    private final String login_url = "http://192.168.0.108/FarmManager/login.php";
-    private String email, password;
+    private EditText phoneEdit, passwordEdit;
+    private final String login_url = "http://fmanager.agria.co.ke/login.php";
+    private String phone, password;
     private AlertDialog.Builder dialogBuilder;
     private ProgressDialog progressDialog;
+    private static final String TAG = "Login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,24 +40,24 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        emailEdit = findViewById(R.id.email_edit);
+        phoneEdit = findViewById(R.id.phone_edit1);
         passwordEdit = findViewById(R.id.password_edit);
         dialogBuilder = new AlertDialog.Builder(this);
         progressDialog = new ProgressDialog(this);
         Button loginBtn = findViewById(R.id.login_btn);
         loginBtn.setOnClickListener(v -> {
-            email = emailEdit.getText().toString();
+            phone = phoneEdit.getText().toString();
             password = passwordEdit.getText().toString();
 
-            validateInputFields(email, password);
-            loginUser(email, password);
+            validateInputFields(phone, password);
+            loginUser(phone, password);
             progressDialog.setTitle("Logging In");
             progressDialog.setMessage("Please wait...");
             progressDialog.show();
         });
     }
 
-    private void loginUser(String email, String password) {
+    private void loginUser(String phone, String password) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url, response -> {
             progressDialog.dismiss();
             String responseType = "", registrationDate = "", firstName = "", lastName = "", emailAddress = "", phoneNumber = "", farmName = "";
@@ -67,16 +69,17 @@ public class Login extends AppCompatActivity {
                     registrationDate = jsonObject.getString("registrationDate");
                     firstName = jsonObject.getString("firstName");
                     lastName = jsonObject.getString("lastName");
-                    emailAddress = jsonObject.getString("email");
+                    emailAddress = jsonObject.getString("phone");
                     phoneNumber = jsonObject.getString("phone");
                     farmName = jsonObject.getString("farmName");
                 }
+                Log.i(TAG, "loginUser: " + responseType);
                 if (responseType.equalsIgnoreCase("Login Successful")) {
                     Intent intent = new Intent(getApplicationContext(), LauncherActivity.class);
                     intent.putExtra("regDate", registrationDate);
                     intent.putExtra("firstName", firstName);
                     intent.putExtra("lastName", lastName);
-                    intent.putExtra("email", emailAddress);
+                    intent.putExtra("phone", emailAddress);
                     intent.putExtra("phone", phoneNumber);
                     intent.putExtra("farmName", farmName);
                     startActivity(intent);
@@ -101,7 +104,7 @@ public class Login extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> postParams = new HashMap<>();
-                postParams.put("Email", email);
+                postParams.put("Email", phone);
                 postParams.put("Password", password);
                 return postParams;
             }
@@ -111,10 +114,10 @@ public class Login extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    private void validateInputFields(String email, String password) {
-        if (TextUtils.isEmpty(email)) {
-            emailEdit.setError("Input required");
-            emailEdit.requestFocus();
+    private void validateInputFields(String phone, String password) {
+        if (TextUtils.isEmpty(phone)) {
+            phoneEdit.setError("Input required");
+            phoneEdit.requestFocus();
             return;
         }
 

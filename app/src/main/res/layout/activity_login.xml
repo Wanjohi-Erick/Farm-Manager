@@ -19,13 +19,13 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/email_edit"
-        android:hint="@string/enter_your_email"
+        android:id="@+id/phone_edit1"
+        android:hint="@string/enter_your_phone_number"
         android:textSize="@dimen/text_size"
         android:layout_margin="@dimen/margin"
         android:background="@drawable/edit_text_background"
         android:padding="@dimen/padding"
-        android:inputType="textEmailAddress"
+        android:inputType="phone"
         android:drawableStart="@drawable/ic_baseline_particulars"
         android:drawablePadding="@dimen/padding"
         android:drawableLeft="@drawable/ic_baseline_particulars" />

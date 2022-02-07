@@ -6,6 +6,12 @@
         <entry key="..\:/Users/rickiey/AndroidStudioProjects/Farm-Manager/app/src/main/res/layout/activity_launcher.xml" value="0.1322463768115942" />
         <entry key="..\:/Users/rickiey/AndroidStudioProjects/Farm-Manager/app/src/main/res/layout/activity_login.xml" value="0.1480978260869565" />
         <entry key="..\:/Users/rickiey/AndroidStudioProjects/Farm-Manager/app/src/main/res/layout/activity_registration.xml" value="0.1480978260869565" />
+        <entry key="..\:/Users/rickiey/AndroidStudioProjects/Farm-Manager/app/src/main/res/layout/app_bar_navigation_drawer.xml" value="0.13272543059777103" />
+        <entry key="..\:/Users/rickiey/AndroidStudioProjects/Farm-Manager/app/src/main/res/layout/fragment_home_bottom_nav.xml" value="0.13272543059777103" />
+        <entry key="..\:/Users/rickiey/AndroidStudioProjects/Farm-Manager/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.1480978260869565" />
+        <entry key="..\:/Users/rickiey/AndroidStudioProjects/Farm-Manager/app/src/main/res/menu/activity_navigation_drawer_drawer.xml" value="0.26871794871794874" />
+        <entry key="..\:/Users/rickiey/AndroidStudioProjects/Farm-Manager/app/src/main/res/menu/bottom_nav_menu.xml" value="0.262037037037037" />
+        <entry key="..\:/Users/rickiey/AndroidStudioProjects/Farm-Manager/app/src/main/res/menu/navigation_drawer.xml" value="0.26871794871794874" />
       </map>
     </option>
   </component>
