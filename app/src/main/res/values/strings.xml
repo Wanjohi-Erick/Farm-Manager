@@ -79,5 +79,6 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="enter_the_name_of_your_farm">Enter the name of your farm</string>
+    <string name="forgotten_username_or_password">Forgotten username or password?</string>
 
 </resources>

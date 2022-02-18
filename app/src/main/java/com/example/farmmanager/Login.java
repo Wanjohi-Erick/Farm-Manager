@@ -1,5 +1,6 @@
 package com.example.farmmanager;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -27,8 +30,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Login extends AppCompatActivity {
-    private EditText phoneEdit, passwordEdit;
+    private EditText phoneEdit, passwordEdit, phoneEditReset, passEditReset, confirmPassEdit;
     private final String login_url = "http://fmanager.agria.co.ke/login.php";
+    private final String reset_pass_url = "http://fmanager.agria.co.ke/resetPass.php";
     private String phone, password;
     private AlertDialog.Builder dialogBuilder;
     private ProgressDialog progressDialog;
@@ -39,9 +43,12 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        TextView resetPassword;
 
         phoneEdit = findViewById(R.id.phone_edit1);
         passwordEdit = findViewById(R.id.password_edit);
+        resetPassword = findViewById(R.id.reset_password);
+        resetPassword.setOnClickListener(v -> resetPassword());
         dialogBuilder = new AlertDialog.Builder(this);
         progressDialog = new ProgressDialog(this);
         Button loginBtn = findViewById(R.id.login_btn);
@@ -49,12 +56,120 @@ public class Login extends AppCompatActivity {
             phone = phoneEdit.getText().toString();
             password = passwordEdit.getText().toString();
 
-            validateInputFields(phone, password);
-            loginUser(phone, password);
-            progressDialog.setTitle("Logging In");
-            progressDialog.setMessage("Please wait...");
-            progressDialog.show();
+            if (validateInputFields(phone, password)) {
+                loginUser(phone, password);
+                progressDialog.setTitle("Logging In");
+                progressDialog.setMessage("Please wait...");
+                progressDialog.show();
+            }
         });
+    }
+
+    private void resetPassword() {
+        Dialog resetPassDialog = new Dialog(this);
+        resetPassDialog.setContentView(R.layout.reset_pass_layout);
+        Button resetPassBtn, cancelBtn;
+        phoneEditReset = resetPassDialog.findViewById(R.id.phone_edit_reset);
+        passEditReset = resetPassDialog.findViewById(R.id.password_edit_reset);
+        confirmPassEdit = resetPassDialog.findViewById(R.id.confirm_password_edit_reset);
+        cancelBtn = resetPassDialog.findViewById(R.id.cancel_btn);
+        cancelBtn.setOnClickListener(v -> resetPassDialog.dismiss());
+        resetPassBtn = resetPassDialog.findViewById(R.id.reset_pass_btn);
+        resetPassBtn.setOnClickListener(v -> {
+            String phone, pass, conPass;
+            phone = phoneEditReset.getText().toString();
+            pass = passEditReset.getText().toString();
+            conPass = confirmPassEdit.getText().toString();
+
+            if (validFields(phone, pass, conPass)) {
+                Toast.makeText(this, "valid", Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "resetPassword: valid");
+                sendToDatabase(phone, pass, resetPassDialog);
+                progressDialog.setTitle("Resetting Password");
+                progressDialog.setMessage("Please wait ...");
+                progressDialog.show();
+            }
+        });
+        resetPassDialog.show();
+    }
+
+    private void sendToDatabase(String phone, String pass, Dialog resetPassDialog) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, reset_pass_url, response -> {
+            if (response.equalsIgnoreCase("success")) {
+                progressDialog.dismiss();
+                dialogBuilder.setTitle("Server Response");
+                dialogBuilder.setMessage(response);
+                dialogBuilder.setPositiveButton("Ok", (dialog, which) -> {
+                    dialog.dismiss();
+                    resetPassDialog.dismiss();
+                });
+                AlertDialog alertDialog = dialogBuilder.create();
+                alertDialog.show();
+            } else if (response.equalsIgnoreCase("null")) {
+                progressDialog.dismiss();
+                dialogBuilder.setTitle("Error");
+                dialogBuilder.setMessage("The provided phone number does not exist in our system.");
+                dialogBuilder.setPositiveButton("Ok", (dialog, which) -> {
+                    dialog.dismiss();
+                    resetPassDialog.dismiss();
+                });
+                AlertDialog alertDialog = dialogBuilder.create();
+                alertDialog.show();
+            } else {
+                progressDialog.dismiss();
+                dialogBuilder.setTitle("Server Response");
+                dialogBuilder.setMessage(response);
+                dialogBuilder.setPositiveButton("Ok", (dialog, which) -> dialog.dismiss());
+                AlertDialog alertDialog = dialogBuilder.create();
+                alertDialog.show();
+            }
+        }, error -> {
+            progressDialog.dismiss();
+            dialogBuilder.setTitle("Server Response");
+            dialogBuilder.setMessage(error.getLocalizedMessage());
+            dialogBuilder.setPositiveButton("Ok", (dialog, which) -> dialog.dismiss());
+            AlertDialog alertDialog = dialogBuilder.create();
+            alertDialog.show();
+        }) {
+            @NonNull
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("Phone", phone);
+                params.put("Password", pass);
+                return params;
+            }
+        };
+        stringRequest.setShouldCache(false);
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    private boolean validFields(String phone, String pass, String conPass) {
+        if (TextUtils.isEmpty(phone)) {
+            phoneEditReset.setError("Input Required!");
+            phoneEditReset.requestFocus();
+            return false;
+        }
+
+        if (TextUtils.isEmpty(pass)) {
+            passEditReset.setError("Input Required!");
+            passEditReset.requestFocus();
+            return false;
+        }
+
+        if (TextUtils.isEmpty(conPass)) {
+            confirmPassEdit.setError("Input Required!");
+            confirmPassEdit.requestFocus();
+            return false;
+        }
+
+        if (!pass.equalsIgnoreCase(conPass)) {
+            passEditReset.setError("Passwords do not match!");
+            confirmPassEdit.setError("Passwords do not match!");
+            passEditReset.requestFocus();
+            return false;
+        }
+        return true;
     }
 
     private void loginUser(String phone, String password) {
@@ -87,7 +202,8 @@ public class Login extends AppCompatActivity {
                     dialogBuilder.setTitle("Login Failed");
                     dialogBuilder.setMessage("Check login details and try again");
                     dialogBuilder.setPositiveButton("Ok", (dialog1, which1) -> dialog1.dismiss());
-                    dialogBuilder.create().show();
+                    AlertDialog alertDialog = dialogBuilder.create();
+                    alertDialog.show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -114,17 +230,19 @@ public class Login extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    private void validateInputFields(String phone, String password) {
+    private boolean validateInputFields(String phone, String password) {
         if (TextUtils.isEmpty(phone)) {
             phoneEdit.setError("Input required");
             phoneEdit.requestFocus();
-            return;
+            return false;
         }
 
         if (TextUtils.isEmpty(password)) {
             passwordEdit.setError("Input required");
             passwordEdit.requestFocus();
+            return false;
         }
+        return true;
     }
 
     public void toRegistration(View view) {

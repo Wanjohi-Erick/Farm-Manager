@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@drawable/layout_background"
     android:gravity="center"
@@ -28,21 +29,28 @@
         android:inputType="phone"
         android:drawableStart="@drawable/ic_baseline_particulars"
         android:drawablePadding="@dimen/padding"
-        android:drawableLeft="@drawable/ic_baseline_particulars" />
+        android:drawableLeft="@drawable/ic_baseline_particulars"
+        android:autofillHints="" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/password_edit"
-        android:hint="@string/enter_your_password"
-        android:textSize="@dimen/text_size"
-        android:layout_margin="@dimen/margin"
-        android:background="@drawable/edit_text_background"
-        android:padding="@dimen/padding"
-        android:inputType="textPassword"
-        android:drawableStart="@drawable/ic_baseline_lock_24"
-        android:drawablePadding="@dimen/padding"
-        android:drawableLeft="@drawable/ic_baseline_lock_24" />
+        app:passwordToggleEnabled="true">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/password_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_background"
+            android:hint="@string/enter_your_password"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="@dimen/padding"
+            android:inputType="textPassword"
+            android:layout_margin="@dimen/margin"
+            android:maxLines="1"
+            android:drawableStart="@drawable/ic_baseline_lock_24" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:layout_width="wrap_content"
@@ -52,10 +60,21 @@
         android:text="@string/login"
         android:layout_margin="@dimen/margin"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/reset_password"
+        android:text="@string/forgotten_username_or_password"
+        android:textSize="@dimen/text_size"
+        android:textAlignment="center"
+        android:textColor="#ff0000"
+        android:gravity="center_horizontal" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
+        android:layout_margin="@dimen/margin"
         android:orientation="horizontal">
 
         <TextView
