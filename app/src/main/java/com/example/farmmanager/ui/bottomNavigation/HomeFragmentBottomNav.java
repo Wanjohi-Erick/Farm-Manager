@@ -25,6 +25,7 @@ import com.google.android.material.tabs.TabLayout;
 public class HomeFragmentBottomNav extends Fragment implements View.OnClickListener {
     CardView transactionsCardView, livestockCardView, cropsCardView, notificationsCardView, calendarCardView, settingsCardView;
     TextView farmNameView, usernameView;
+    String username, farmName;
     private static final String TAG = "Home";
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -39,8 +40,8 @@ public class HomeFragmentBottomNav extends Fragment implements View.OnClickListe
         usernameView = root.findViewById(R.id.username_view);
         LauncherActivity launcherActivity = new LauncherActivity();
         Bundle bundle = getActivity().getIntent().getExtras();
-        String username = bundle.getString("firstName");
-        String farmName = bundle.getString("farmName");
+        username = bundle.getString("firstName");
+        farmName = bundle.getString("farmName");
         farmNameView.setText(farmName);
         usernameView.setText(String.format("Hi, %s", username));
         transactionsCardView.setOnClickListener(this);
@@ -63,17 +64,35 @@ public class HomeFragmentBottomNav extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         int ID = v.getId();
         if (ID == R.id.transactions_card_view){
-            startActivity(new Intent(getContext(), Transactions.class));
+            Intent intent = new Intent(getContext(), Transactions.class);
+            intent.putExtra("username", username);
+            intent.putExtra("farmName", farmName);
+            startActivity(intent);
         } else if (ID == R.id.livestock_card_view){
-            startActivity(new Intent(getContext(), LivestockActivity.class));
+            Intent intent = new Intent(getContext(), LivestockActivity.class);
+            intent.putExtra("username", username);
+            intent.putExtra("farmName", farmName);
+            startActivity(intent);
         } else if (ID == R.id.crops_card_view){
-            startActivity(new Intent(getContext(), CropsActivity.class));
+            Intent intent = new Intent(getContext(), CropsActivity.class);
+            intent.putExtra("username", username);
+            intent.putExtra("farmName", farmName);
+            startActivity(intent);
         } else if (ID == R.id.notifications_card_view){
-            startActivity(new Intent(getContext(), LivestockActivity.class));
+            Intent intent = new Intent(getContext(), LivestockActivity.class);
+            intent.putExtra("username", username);
+            intent.putExtra("farmName", farmName);
+            startActivity(intent);
         } else if (ID == R.id.calendar_card_view){
-            startActivity(new Intent(getContext(), CalendarActivity.class));
+            Intent intent = new Intent(getContext(), CalendarActivity.class);
+            intent.putExtra("username", username);
+            intent.putExtra("farmName", farmName);
+            startActivity(intent);
         } else if (ID == R.id.settings_card_view){
-            startActivity(new Intent(getContext(), LivestockActivity.class));
+            Intent intent = new Intent(getContext(), LivestockActivity.class);
+            intent.putExtra("username", username);
+            intent.putExtra("farmName", farmName);
+            startActivity(intent);
         }
     }
 }
