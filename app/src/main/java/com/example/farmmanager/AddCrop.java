@@ -67,6 +67,29 @@ public class AddCrop extends AppCompatActivity implements View.OnClickListener {
         ArrayAdapter<String> land_details_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, land_details_list);
         land_details_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         land_to_plant_spinner.setAdapter(land_details_adapter);
+        harvest_unit_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                harvest_unit = String.valueOf(parent.getItemAtPosition(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                harvest_unit = String.valueOf(parent.getSelectedItem());
+            }
+        });
+
+        land_to_plant_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                land_details = String.valueOf(parent.getItemAtPosition(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                land_details = String.valueOf(parent.getSelectedItem());
+            }
+        });
         save.setOnClickListener(this);
 
     }
@@ -75,30 +98,6 @@ public class AddCrop extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         if (v == findViewById(R.id.save_crop_btn)){
             cropNameTxt = cropName.getText().toString();
-            harvest_unit_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    harvest_unit = String.valueOf(parent.getItemAtPosition(position));
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    harvest_unit = String.valueOf(parent.getSelectedItem());
-                }
-            });
-            // TODO: 25/06/2021 handle the null response from views
-
-            land_to_plant_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    land_details = String.valueOf(parent.getItemAtPosition(position));
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    land_details = String.valueOf(parent.getSelectedItem());
-                }
-            });
             Bundle bundle = getIntent().getExtras();
             userName = bundle.getString("userDetails");
             sendToDatabase(cropNameTxt, harvest_unit, land_details, userName);
