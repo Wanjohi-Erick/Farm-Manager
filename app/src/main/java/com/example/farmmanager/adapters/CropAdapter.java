@@ -31,15 +31,12 @@ public class CropAdapter extends RecyclerView.Adapter<CropAdapter.myViewHolder> 
     @Override
     public void onBindViewHolder(myViewHolder holder, int position) {
         holder.textView.setText(crops.get(position).getCropName());
-        holder.textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent updateCropIntent = new Intent(v.getContext(), UpdateCrop.class);
-                updateCropIntent.putExtra("name", crops.get(position).getCropName());
-                updateCropIntent.putExtra("harvestUnits", crops.get(position).getHarvestUnits());
-                updateCropIntent.putExtra("land", crops.get(position).getLandName());
-                v.getContext().startActivity(updateCropIntent);
-            }
+        holder.textView.setOnClickListener(v -> {
+            Intent updateCropIntent = new Intent(v.getContext(), UpdateCrop.class);
+            updateCropIntent.putExtra("name", crops.get(position).getCropName());
+            updateCropIntent.putExtra("harvestUnits", crops.get(position).getHarvestUnits());
+            updateCropIntent.putExtra("land", crops.get(position).getLandName());
+            v.getContext().startActivity(updateCropIntent);
         });
     }
 

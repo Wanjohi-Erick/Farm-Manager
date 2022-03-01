@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ViewSwitcher;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -26,7 +27,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CropsActivity extends AppCompatActivity {
     FloatingActionButton fab;
@@ -34,7 +37,8 @@ public class CropsActivity extends AppCompatActivity {
     RecyclerView allCropsRecycler;
     CropAdapter cropAdapter;
     List<CropsModel> list = new ArrayList<>();
-    String urlToRetrieve = "http://fmanager.agria.co.ke/retrieveAvailableCrops.php";
+    String urlToRetrieve = "http://192.168.2.124/FarmManager/retrieveAvailableCrops.php";
+    String username, farmName, details;
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
 
@@ -46,7 +50,10 @@ public class CropsActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        Bundle bundle = getIntent().getExtras();
+        username = bundle.getString("username");
+        farmName = bundle.getString("farmName");
+        details = String.format("%s@%s", username, farmName);
         MobileAds.initialize(this, initializationStatus -> {
 
         });
@@ -71,8 +78,7 @@ public class CropsActivity extends AppCompatActivity {
     }
 
     private void getListFromDatabase() {
-        // TODO: 2/23/2022 replace GET method with POST and call bundle to fetch user-specific records from database
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, urlToRetrieve, response -> {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlToRetrieve, response -> {
             progressDialog.dismiss();
             try {
                 JSONArray responseArray = new JSONArray(response);
@@ -98,12 +104,22 @@ public class CropsActivity extends AppCompatActivity {
             alertDialog.setMessage(error.getLocalizedMessage());
             AlertDialog dialog = alertDialog.create();
             dialog.show();
-        });
+        }){
+            @NonNull
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("UserName", details);
+                return params;
+            }
+        };
         stringRequest.setShouldCache(false);
         Volley.newRequestQueue(this).add(stringRequest);
     }
 
     private void addCrop() {
-        startActivity(new Intent(this, AddCrop.class));
+        Intent intent = new Intent(this, AddCrop.class);
+        intent.putExtra("userDetails", details);
+        startActivity(intent);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.farmmanager;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -33,11 +34,11 @@ public class AddCrop extends AppCompatActivity implements View.OnClickListener {
     List<String> land_details_list = new ArrayList<>();
     Spinner harvest_unit_spinner, land_to_plant_spinner;
     EditText cropName;
-    String cropNameTxt, harvest_unit, land_details;
+    String cropNameTxt, harvest_unit, land_details, userName;
     Button save;
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
-    String urlToSave = "http://fmanager.agria.co.ke/recordCrops.php";
+    String urlToSave = "http://192.168.2.124/FarmManager/recordCrops.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +83,7 @@ public class AddCrop extends AppCompatActivity implements View.OnClickListener {
 
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
-                    harvest_unit = "";
+                    harvest_unit = String.valueOf(parent.getSelectedItem());
                 }
             });
             // TODO: 25/06/2021 handle the null response from views
@@ -95,17 +96,19 @@ public class AddCrop extends AppCompatActivity implements View.OnClickListener {
 
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
-                    harvest_unit = "";
+                    land_details = String.valueOf(parent.getSelectedItem());
                 }
             });
-            sendToDatabase(cropNameTxt, harvest_unit);
+            Bundle bundle = getIntent().getExtras();
+            userName = bundle.getString("userDetails");
+            sendToDatabase(cropNameTxt, harvest_unit, land_details, userName);
             progressDialog.setTitle("Saving crop details");
             progressDialog.setMessage("Please wait...");
             progressDialog.show();
         }
     }
 
-    private void sendToDatabase(String cropNameTxt, String unit) {
+    private void sendToDatabase(String cropNameTxt, String unit, String land_details, String userName) {
         InternetConnectivity internetConnectivity = new InternetConnectivity();
         if (!internetConnectivity.isConnected(this)){
             alertDialog.setTitle("No internet connection");
@@ -133,6 +136,7 @@ public class AddCrop extends AppCompatActivity implements View.OnClickListener {
                     cropDetails.put("name", cropNameTxt);
                     cropDetails.put("units", unit);
                     cropDetails.put("land", land_details);
+                    cropDetails.put("userName", userName);
                     return cropDetails;
                 }
             };
@@ -144,10 +148,11 @@ public class AddCrop extends AppCompatActivity implements View.OnClickListener {
     private void feedback(String response) {
         alertDialog.setPositiveButton("Ok", (dialog, which) -> {
             if (response.trim().equalsIgnoreCase("success")){
-                Toast.makeText(this, "Successfully saved", Toast.LENGTH_SHORT).show();
+                cropName.setText("");
+                startActivity(new Intent(this, CropsActivity.class));
+                finish();
             } else {
                 Toast.makeText(AddCrop.this, "ERROR", Toast.LENGTH_SHORT).show();
-                cropName.setText("");
             }
         });
         AlertDialog dialog = alertDialog.create();

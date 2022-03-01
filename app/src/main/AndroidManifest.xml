@@ -109,7 +109,7 @@
             android:theme="@style/Theme.FarmManager.NoActionBar" />
         <activity
             android:name=".AddCrop"
-            android:parentActivityName=".LauncherActivity">
+            android:parentActivityName=".CropsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CropsActivity" />
