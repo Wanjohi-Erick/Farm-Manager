@@ -3,7 +3,9 @@ package com.example.farmmanager;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +30,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Login extends AppCompatActivity {
     private EditText phoneEdit, passwordEdit, phoneEditReset, passEditReset, confirmPassEdit;
@@ -43,14 +46,27 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        TextView resetPassword;
 
+        dialogBuilder = new AlertDialog.Builder(this);
+        progressDialog = new ProgressDialog(this);
+
+        String userId, userPass;
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(Login.this);
+        userId = prefs.getString("userId", "user");
+        userPass = prefs.getString("userPass", "pass");
+
+        if (!userId.equalsIgnoreCase("user") && !userPass.equalsIgnoreCase("pass")) {
+            progressDialog.setTitle("Logging in");
+            progressDialog.setMessage("Please wait...");
+            progressDialog.show();
+            loginUser(userId, userPass);
+        }
+
+        TextView resetPassword;
         phoneEdit = findViewById(R.id.phone_edit1);
         passwordEdit = findViewById(R.id.password_edit);
         resetPassword = findViewById(R.id.reset_password);
         resetPassword.setOnClickListener(v -> resetPassword());
-        dialogBuilder = new AlertDialog.Builder(this);
-        progressDialog = new ProgressDialog(this);
         Button loginBtn = findViewById(R.id.login_btn);
         loginBtn.setOnClickListener(v -> {
             phone = phoneEdit.getText().toString();
@@ -197,6 +213,12 @@ public class Login extends AppCompatActivity {
                     intent.putExtra("phone", emailAddress);
                     intent.putExtra("phone", phoneNumber);
                     intent.putExtra("farmName", farmName);
+
+                    //auto login
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(Login.this);
+
+                    prefs.edit().putString("userId",phone).apply();
+                    prefs.edit().putString("userPass", password).apply();
                     startActivity(intent);
                 } else {
                     dialogBuilder.setTitle("Login Failed");
