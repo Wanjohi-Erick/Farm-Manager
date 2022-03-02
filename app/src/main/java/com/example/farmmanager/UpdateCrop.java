@@ -98,6 +98,29 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
         ArrayAdapter<String> land_details_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, land_details_list);
         land_details_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         land_to_plant_spinner.setAdapter(land_details_adapter);
+        harvest_unit_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                harvest_unit = String.valueOf(parent.getItemAtPosition(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                harvest_unit = String.valueOf(parent.getSelectedItem());
+            }
+        });
+
+        land_to_plant_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                land_details = String.valueOf(parent.getItemAtPosition(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                harvest_unit  = String.valueOf(parent.getSelectedItem());
+            }
+        });
         updateRecordsBtn.setOnClickListener(this);
         updateTreatmentScheduleBtn.setOnClickListener(this);
 
@@ -150,12 +173,7 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
                 startDateView.setOnClickListener(v12 -> {
                     datePickerDialog.getDatePicker().updateDate(2020, 12, 25);
                     datePickerDialog.show();
-                    datePickerDialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view1, int year1, int month, int dayOfMonth1) {
-                            startDateView.setText(dayOfMonth1+"-"+month+"-"+year1);
-                        }
-                    });
+                    datePickerDialog.setOnDateSetListener((view1, year1, month, dayOfMonth1) -> startDateView.setText(dayOfMonth1+"-"+month+"-"+year1));
                 });
                 saveEventBtn.setOnClickListener(v1 -> {
                     activity = eventName.getText().toString();
@@ -173,30 +191,6 @@ public class UpdateCrop extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
         if (v == findViewById(R.id.save_crop_btn)){
             cropNameTxt = cropNameEdit.getText().toString();
-            harvest_unit_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    harvest_unit = String.valueOf(parent.getItemAtPosition(position));
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    harvest_unit = String.valueOf(parent.getSelectedItem());
-                }
-            });
-            // TODO: 25/06/2021 handle the null response from views
-
-            land_to_plant_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    land_details = String.valueOf(parent.getItemAtPosition(position));
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    harvest_unit  = String.valueOf(parent.getSelectedItem());
-                }
-            });
             yield = yieldEdit.getText().toString();
             updateDatabase(cropNameTxt, harvest_unit, land_details, activity, yield, startDate);
             progressDialog.setTitle("Saving crop details");

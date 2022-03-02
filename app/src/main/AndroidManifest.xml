@@ -45,7 +45,11 @@
         <activity
             android:name=".UpdateEmployee"
             android:label="@string/title_activity_update_employee"
-            android:theme="@style/Theme.FarmManager.NoActionBar" />
+            android:parentActivityName=".Employees" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Employees" />
+        </activity>
         <activity
             android:name=".NavigationDrawerActivity"
             android:label="@string/title_activity_update_employee"
@@ -69,7 +73,7 @@
             android:theme="@style/Theme.FarmManager.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CropsActivity" />
+                android:value=".LivestockActivity" />
         </activity>
         <activity
             android:name=".UpdateCrop"

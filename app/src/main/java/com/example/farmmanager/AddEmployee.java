@@ -26,10 +26,11 @@ public class AddEmployee extends AppCompatActivity implements View.OnClickListen
     //todo Add internet connectivity check to all activities and display a text box with internet error
     private EditText employeeNameEdit, employeeIDEdit, employeeContactEdit;
     private Button saveEmployeeBtn;
-    private final String recordEmployeeUrl = "http://192.168.43.2/farmmanager/recordEmployeeDetails.php";
+    private final String recordEmployeeUrl = "http://fmanager.agria.co.ke/recordEmployeeDetails.php";
     private static final String TAG = "AddEmployee";
     private ProgressDialog progressDialog;
     private AlertDialog.Builder dialog;
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class AddEmployee extends AppCompatActivity implements View.OnClickListen
         Toolbar toolbar = findViewById(R.id.toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         employeeIDEdit = findViewById(R.id.employee_id);
         employeeNameEdit = findViewById(R.id.employee_name);
         employeeContactEdit = findViewById(R.id.employee_contact);
@@ -55,20 +57,22 @@ public class AddEmployee extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         String employeeName, employeeID, employeeContact;
         if (v == saveEmployeeBtn){
+            Bundle bundle = getIntent().getExtras();
+            userName = bundle.getString("userDetails");
             employeeID = employeeIDEdit.getText().toString();
             employeeName = employeeNameEdit.getText().toString();
             employeeContact = employeeContactEdit.getText().toString();
 
             EmployeeValidation employeeValidation = new EmployeeValidation(employeeIDEdit, employeeNameEdit, employeeContactEdit);
             if (employeeValidation.invalidEmployeeDetails(employeeID, employeeName, employeeContact))return;
-            sendToDatabase(employeeID, employeeName, employeeContact);
+            sendToDatabase(employeeID, employeeName, employeeContact, userName);
             progressDialog.setTitle("Recording Employee Details");
             progressDialog.setMessage("Please wait...");
             progressDialog.show();
         }
     }
 
-    private void sendToDatabase(String employeeID, String employeeName, String employeeContact) {
+    private void sendToDatabase(String employeeID, String employeeName, String employeeContact, String userName) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, recordEmployeeUrl, response -> {
             progressDialog.dismiss();
             Log.d(TAG, "onResponse: " + response);
@@ -107,6 +111,7 @@ public class AddEmployee extends AppCompatActivity implements View.OnClickListen
                 params.put("employeeID", employeeID);
                 params.put("employeeName", employeeName);
                 params.put("employeeContact", employeeContact);
+                params.put("userName", userName);
                 return params;
             }
         };

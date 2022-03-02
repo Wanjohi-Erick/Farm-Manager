@@ -6,16 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.farmmanager.Employees;
 import com.example.farmmanager.Inventory;
+import com.example.farmmanager.LauncherActivity;
 import com.example.farmmanager.R;
 
 public class ResourcesFragmentBottomNav extends Fragment implements View.OnClickListener {
     private TextView employees, inventory, fields, shelters, storage;
+    String details;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +37,11 @@ public class ResourcesFragmentBottomNav extends Fragment implements View.OnClick
         shelters.setOnClickListener(this);
         storage.setOnClickListener(this);
 
+        Bundle bundle = getActivity().getIntent().getExtras();
+        String userName = bundle.getString("firstName");
+        String farmName = bundle.getString("farmName");
+        details = String.format("%s@%s", userName, farmName);
+
         return root;
     }
 
@@ -41,6 +49,7 @@ public class ResourcesFragmentBottomNav extends Fragment implements View.OnClick
     public void onClick(View v) {
         if (v.getId() == R.id.employees){
             Intent toActivityIntent = new Intent(this.getContext(), Employees.class);
+            toActivityIntent.putExtra("userDetails", details);
             startActivity(toActivityIntent);
         }else if (v.getId() == R.id.inventory){
             Intent intent = new Intent(this.getContext(), Inventory.class);

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ViewSwitcher;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -23,7 +24,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Employees extends AppCompatActivity {
     private RecyclerView employeesRecycler;
@@ -32,6 +35,7 @@ public class Employees extends AppCompatActivity {
     FloatingActionButton fab;
     ViewSwitcher viewSwitcher;
     String urlToRetrieve = "http://fmanager.agria.co.ke/retrieveEmployeeDetails.php";
+    String username, farmName, details;
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
 
@@ -44,9 +48,14 @@ public class Employees extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Bundle bundle = getIntent().getExtras();
+        username = bundle.getString("username");
+        farmName = bundle.getString("farmName");
+        details = String.format("%s@%s", username, farmName);
+
         viewSwitcher = findViewById(R.id.view_switcher);
         fab = findViewById(R.id.fab);
-        fab.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), AddEmployee.class)));
+        fab.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), AddEmployee.class).putExtra("userDetails", details)));
         progressDialog = new ProgressDialog(this);
         alertDialog = new AlertDialog.Builder(this);
 
@@ -60,7 +69,7 @@ public class Employees extends AppCompatActivity {
     }
 
     private void getFromDatabase() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, urlToRetrieve, response -> {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlToRetrieve, response -> {
             progressDialog.dismiss();
             try {
                 JSONArray responseArray = new JSONArray(response);
@@ -93,7 +102,15 @@ public class Employees extends AppCompatActivity {
             alertDialog.setPositiveButton("Ok", (dialog, which) -> dialog.dismiss());
             AlertDialog dialog = alertDialog.create();
             dialog.show();
-        });
+        }){
+            @NonNull
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("userName", details);
+                return params;
+            }
+        };
         stringRequest.setShouldCache(false);
         Volley.newRequestQueue(this).add(stringRequest);
     }

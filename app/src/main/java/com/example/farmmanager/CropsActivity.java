@@ -37,7 +37,7 @@ public class CropsActivity extends AppCompatActivity {
     RecyclerView allCropsRecycler;
     CropAdapter cropAdapter;
     List<CropsModel> list = new ArrayList<>();
-    String urlToRetrieve = "http://192.168.2.124/FarmManager/retrieveAvailableCrops.php";
+    String urlToRetrieve = "http://fmanager.agria.co.ke/retrieveAvailableCrops.php";
     String username, farmName, details;
     ProgressDialog progressDialog;
     AlertDialog.Builder alertDialog;
@@ -47,7 +47,6 @@ public class CropsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_crops);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Bundle bundle = getIntent().getExtras();
