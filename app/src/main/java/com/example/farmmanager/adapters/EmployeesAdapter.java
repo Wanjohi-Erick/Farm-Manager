@@ -34,15 +34,18 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
-        String name, contact, id;
-        name = employeeList.get(position).getEmployeeName();
+        String firstName, lastName, name, contact, id;
+        firstName = employeeList.get(position).getEmployeeFirstName();
+        lastName = employeeList.get(position).getEmployeeLastName();
+        name = String.format("%s, %s", lastName, firstName);
         id = employeeList.get(position).getEmployeeID();
         contact = employeeList.get(position).getEmployeeContact();
         holder.nameView.setText(name);
         holder.idView.setText(id);
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(holder.itemView.getContext(), ViewEmployee.class);
-            intent.putExtra("name", name);
+            intent.putExtra("firstName", firstName);
+            intent.putExtra("lastName", lastName);
             intent.putExtra("id", id);
             intent.putExtra("contact", contact);
             holder.itemView.getContext().startActivity(intent);

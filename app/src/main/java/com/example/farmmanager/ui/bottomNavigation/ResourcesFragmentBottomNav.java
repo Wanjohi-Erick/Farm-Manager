@@ -16,7 +16,7 @@ import com.example.farmmanager.Inventory;
 import com.example.farmmanager.LauncherActivity;
 import com.example.farmmanager.R;
 
-public class ResourcesFragmentBottomNav extends Fragment implements View.OnClickListener {
+public class ResourcesFragmentBottomNav extends Fragment {
     private TextView employees, inventory, fields, shelters, storage;
     String details;
 
@@ -31,29 +31,17 @@ public class ResourcesFragmentBottomNav extends Fragment implements View.OnClick
         shelters = root.findViewById(R.id.shelters);
         storage = root.findViewById(R.id.storage);
 
-        employees.setOnClickListener(this);
-        inventory.setOnClickListener(this);
-        fields.setOnClickListener(this);
-        shelters.setOnClickListener(this);
-        storage.setOnClickListener(this);
-
         Bundle bundle = getActivity().getIntent().getExtras();
         String userName = bundle.getString("firstName");
         String farmName = bundle.getString("farmName");
         details = String.format("%s@%s", userName, farmName);
 
-        return root;
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.employees){
+        employees.setOnClickListener(v -> {
             Intent toActivityIntent = new Intent(this.getContext(), Employees.class);
             toActivityIntent.putExtra("userDetails", details);
             startActivity(toActivityIntent);
-        }else if (v.getId() == R.id.inventory){
-            Intent intent = new Intent(this.getContext(), Inventory.class);
-            startActivity(intent);
-        }
+        });
+
+        return root;
     }
 }

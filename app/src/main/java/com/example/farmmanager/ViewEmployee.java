@@ -18,8 +18,8 @@ public class ViewEmployee extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         String firstName, lastName, id, phone;
-        firstName = bundle.getString("name");
-        lastName = "LastName";
+        firstName = bundle.getString("firstName");
+        lastName = bundle.getString("lastName");
         id = bundle.getString("id");
         phone = bundle.getString("contact");
         String employee = String.format("%s %s", firstName, lastName);
@@ -31,7 +31,7 @@ public class ViewEmployee extends AppCompatActivity {
 
         editProfile.setOnClickListener(v -> {
             Intent toUpdateIntent = new Intent(this, UpdateEmployee.class);
-            toUpdateIntent.putExtra("name", firstName);
+            toUpdateIntent.putExtra("firstName", firstName);
             toUpdateIntent.putExtra("lastName", lastName);
             toUpdateIntent.putExtra("id", id);
             toUpdateIntent.putExtra("contact", phone);

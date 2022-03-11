@@ -3,6 +3,7 @@ package com.example.farmmanager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
@@ -49,9 +50,7 @@ public class Employees extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Bundle bundle = getIntent().getExtras();
-        username = bundle.getString("username");
-        farmName = bundle.getString("farmName");
-        details = String.format("%s@%s", username, farmName);
+        details = bundle.getString("userDetails");
 
         viewSwitcher = findViewById(R.id.view_switcher);
         fab = findViewById(R.id.fab);
@@ -75,11 +74,12 @@ public class Employees extends AppCompatActivity {
                 JSONArray responseArray = new JSONArray(response);
                 for (int i = 0; i < responseArray.length(); i++){
                     JSONObject details = responseArray.getJSONObject(i);
-                    String employeeName = details.getString("name");
+                    String employeeFirstName = details.getString("firstName");
+                    String employeeLastName = details.getString("lastName");
                     String employeeID = details.getString("employeeID");
                     String employeeContact = details.getString("contact");
                     String dateOfEmployment = details.getString("dateOfEmployment");
-                    EmployeesModel employeesModel = new EmployeesModel(employeeID, employeeName, employeeContact, dateOfEmployment);
+                    EmployeesModel employeesModel = new EmployeesModel(employeeID, employeeFirstName, employeeLastName, employeeContact, dateOfEmployment);
                     employeeList.add(employeesModel);
                     employeesAdapter = new EmployeesAdapter(employeeList);
                     employeesRecycler.setAdapter(employeesAdapter);

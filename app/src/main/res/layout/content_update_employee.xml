@@ -7,48 +7,95 @@
     android:background="@drawable/layout_background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <EditText
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/employee_id_edit"
-        android:background="@drawable/edit_text_background"
-        android:padding="@dimen/padding"
-        android:textSize="@dimen/text_size"
-        android:layout_margin="@dimen/margin"
-        android:hint="Employee ID"/>
+        android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/employee_name_edit"
-        android:background="@drawable/edit_text_background"
-        android:padding="@dimen/padding"
-        android:textSize="@dimen/text_size"
-        android:layout_margin="@dimen/margin"
-        android:hint="Employee Name"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/employee_id_edit"
+                android:background="@drawable/edit_text_background"
+                android:padding="@dimen/padding"
+                android:textSize="@dimen/text_size"
+                android:layout_margin="@dimen/margin"
+                android:hint="Employee ID"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/employee_contact_edit"
-        android:textSize="@dimen/text_size"
-        android:background="@drawable/edit_text_background"
-        android:padding="@dimen/padding"
-        android:layout_margin="@dimen/margin"
-        android:hint="Employee contact"
-        android:inputType="number" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/employee_first_name_edit"
+                android:background="@drawable/edit_text_background"
+                android:padding="@dimen/padding"
+                android:textSize="@dimen/text_size"
+                android:layout_margin="@dimen/margin"
+                android:hint="First Name"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Assign task to employee:-"
-        android:layout_margin="@dimen/margin"/>
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/padding"
-        android:id="@+id/employee_task_spinner"
-        android:layout_margin="@dimen/margin"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/employee_last_name_edit"
+                android:background="@drawable/edit_text_background"
+                android:padding="@dimen/padding"
+                android:textSize="@dimen/text_size"
+                android:layout_margin="@dimen/margin"
+                android:hint="Last Name"/>
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/employee_contact_edit"
+                android:textSize="@dimen/text_size"
+                android:background="@drawable/edit_text_background"
+                android:padding="@dimen/padding"
+                android:layout_margin="@dimen/margin"
+                android:hint="Employee contact"
+                android:inputType="number" />
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/gender_edit"
+                android:background="@drawable/edit_text_background"
+                android:padding="@dimen/padding"
+                android:textSize="@dimen/text_size"
+                android:layout_margin="@dimen/margin"
+                android:inputType="textCapWords"
+                android:hint="Gender"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/role_edit"
+                android:background="@drawable/edit_text_background"
+                android:padding="@dimen/padding"
+                android:textSize="@dimen/text_size"
+                android:layout_margin="@dimen/margin"
+                android:inputType="textCapWords"
+                android:hint="Role"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/salary_edit"
+                android:textSize="@dimen/text_size"
+                android:background="@drawable/edit_text_background"
+                android:padding="@dimen/padding"
+                android:layout_margin="@dimen/margin"
+                android:hint="Salary"
+                android:inputType="number" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/update_employee"
+                android:text="update"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
