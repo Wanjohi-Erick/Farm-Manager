@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmmanager.R;
-import com.example.farmmanager.UpdateEmployee;
+import com.example.farmmanager.ViewEmployee;
 import com.example.farmmanager.models.EmployeesModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -40,15 +40,12 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.MyVi
         contact = employeeList.get(position).getEmployeeContact();
         holder.nameView.setText(name);
         holder.idView.setText(id);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), UpdateEmployee.class);
-                intent.putExtra("name", name);
-                intent.putExtra("id", id);
-                intent.putExtra("contact", contact);
-                holder.itemView.getContext().startActivity(intent);
-            }
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(holder.itemView.getContext(), ViewEmployee.class);
+            intent.putExtra("name", name);
+            intent.putExtra("id", id);
+            intent.putExtra("contact", contact);
+            holder.itemView.getContext().startActivity(intent);
         });
     }
 
@@ -61,7 +58,7 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.MyVi
         TextView nameView, idView;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            nameView = itemView.findViewById(R.id.employee_name);
+            nameView = itemView.findViewById(R.id.employee_last_name);
             idView = itemView.findViewById(R.id.employee_id);
         }
     }

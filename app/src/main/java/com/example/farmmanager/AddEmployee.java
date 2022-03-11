@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class AddEmployee extends AppCompatActivity implements View.OnClickListener {
     //todo Add internet connectivity check to all activities and display a text box with internet error
-    private EditText employeeNameEdit, employeeIDEdit, employeeContactEdit;
+    private EditText employeeFirstNameEdit, employeeLastNameEdit, employeeIDEdit, employeeContactEdit;
     private Button saveEmployeeBtn;
     private final String recordEmployeeUrl = "http://fmanager.agria.co.ke/recordEmployeeDetails.php";
     private static final String TAG = "AddEmployee";
@@ -42,7 +42,8 @@ public class AddEmployee extends AppCompatActivity implements View.OnClickListen
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         employeeIDEdit = findViewById(R.id.employee_id);
-        employeeNameEdit = findViewById(R.id.employee_name);
+        employeeFirstNameEdit = findViewById(R.id.employee_first_name);
+        employeeLastNameEdit = findViewById(R.id.employee_last_name);
         employeeContactEdit = findViewById(R.id.employee_contact);
         saveEmployeeBtn = findViewById(R.id.save_employee_btn);
         progressDialog = new ProgressDialog(this);
@@ -55,24 +56,25 @@ public class AddEmployee extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        String employeeName, employeeID, employeeContact;
+        String employeeFirstName, employeeLastName, employeeID, employeeContact;
         if (v == saveEmployeeBtn){
             Bundle bundle = getIntent().getExtras();
             userName = bundle.getString("userDetails");
             employeeID = employeeIDEdit.getText().toString();
-            employeeName = employeeNameEdit.getText().toString();
+            employeeFirstName = employeeFirstNameEdit.getText().toString();
+            employeeLastName = employeeLastNameEdit.getText().toString();
             employeeContact = employeeContactEdit.getText().toString();
 
-            EmployeeValidation employeeValidation = new EmployeeValidation(employeeIDEdit, employeeNameEdit, employeeContactEdit);
-            if (employeeValidation.invalidEmployeeDetails(employeeID, employeeName, employeeContact))return;
-            sendToDatabase(employeeID, employeeName, employeeContact, userName);
+            EmployeeValidation employeeValidation = new EmployeeValidation(employeeIDEdit, employeeFirstNameEdit, employeeLastNameEdit, employeeContactEdit);
+            if (employeeValidation.invalidEmployeeDetails(employeeID, employeeFirstName, employeeLastName, employeeContact))return;
+            sendToDatabase(employeeID, employeeFirstName, employeeLastName, employeeContact, userName);
             progressDialog.setTitle("Recording Employee Details");
             progressDialog.setMessage("Please wait...");
             progressDialog.show();
         }
     }
 
-    private void sendToDatabase(String employeeID, String employeeName, String employeeContact, String userName) {
+    private void sendToDatabase(String employeeID, String employeeFirstName, String employeeLastName, String employeeContact, String userName) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, recordEmployeeUrl, response -> {
             progressDialog.dismiss();
             Log.d(TAG, "onResponse: " + response);
@@ -83,7 +85,7 @@ public class AddEmployee extends AppCompatActivity implements View.OnClickListen
                 AlertDialog alertDialog = dialog.create();
                 alertDialog.show();
                 employeeIDEdit.setText("");
-                employeeNameEdit.setText("");
+                employeeLastNameEdit.setText("");
                 employeeContactEdit.setText("");
             } else {
                 dialog.setTitle("Server Error");
@@ -109,7 +111,8 @@ public class AddEmployee extends AppCompatActivity implements View.OnClickListen
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("employeeID", employeeID);
-                params.put("employeeName", employeeName);
+                params.put("employeeFirstName", employeeFirstName);
+                params.put("employeeLastName", employeeLastName);
                 params.put("employeeContact", employeeContact);
                 params.put("userName", userName);
                 return params;

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/layout_background"
+    tools:context=".ViewEmployee">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_profile"
+        android:text="@string/edit_profile"
+        android:textSize="@dimen/text_size"
+        android:layout_margin="@dimen/margin"
+        android:background="@drawable/edit_text_background"
+        android:padding="@dimen/padding"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/assign_activity"
+        android:text="@string/assign_activity"
+        android:textSize="@dimen/text_size"
+        android:layout_margin="@dimen/margin"
+        android:background="@drawable/edit_text_background"
+        android:padding="@dimen/padding"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/view_history"
+        android:text="@string/view_history"
+        android:textSize="@dimen/text_size"
+        android:layout_margin="@dimen/margin"
+        android:background="@drawable/edit_text_background"
+        android:padding="@dimen/padding"/>
+
+</LinearLayout>

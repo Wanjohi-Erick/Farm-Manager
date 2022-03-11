@@ -4,24 +4,31 @@ import android.text.TextUtils;
 import android.widget.EditText;
 
 public class EmployeeValidation {
-    EditText employeeIDEdit, employeeNameEdit, employeeContactEdit;
+    EditText employeeIDEdit, employeeFirstNameEdit, employeeLastNameEdit, employeeContactEdit;
 
-    public EmployeeValidation(EditText employeeIDEdit, EditText employeeNameEdit, EditText employeeContactEdit) {
+    public EmployeeValidation(EditText employeeIDEdit, EditText employeeFirstNameEdit, EditText employeeLastNameEdit, EditText employeeContactEdit) {
         this.employeeIDEdit = employeeIDEdit;
-        this.employeeNameEdit = employeeNameEdit;
+        this.employeeFirstNameEdit = employeeFirstNameEdit;
+        this.employeeLastNameEdit = employeeLastNameEdit;
         this.employeeContactEdit = employeeContactEdit;
     }
 
-    public boolean invalidEmployeeDetails(String employeeID, String employeeName, String employeeContact) {
+    public boolean invalidEmployeeDetails(String employeeID, String employeeFirstName, String employeeLastName, String employeeContact) {
         if (TextUtils.isEmpty(employeeID)){
             employeeIDEdit.setError("Must not be empty");
             employeeIDEdit.requestFocus();
             return true;
         }
 
-        if (TextUtils.isEmpty(employeeName)){
-            employeeNameEdit.setError("Must not be empty");
-            employeeNameEdit.requestFocus();
+        if (TextUtils.isEmpty(employeeFirstName)){
+            employeeFirstNameEdit.setError("Must not be empty");
+            employeeFirstNameEdit.requestFocus();
+            return true;
+        }
+
+        if (TextUtils.isEmpty(employeeLastName)){
+            employeeLastNameEdit.setError("Must not be empty");
+            employeeLastNameEdit.requestFocus();
             return true;
         }
 

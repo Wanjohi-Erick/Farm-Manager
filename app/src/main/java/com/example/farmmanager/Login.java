@@ -56,9 +56,11 @@ public class Login extends AppCompatActivity {
         userPass = prefs.getString("userPass", "pass");
 
         if (!userId.equalsIgnoreCase("user") && !userPass.equalsIgnoreCase("pass")) {
-            progressDialog.setTitle("Logging in");
+            /* progressDialog.setTitle("Logging in");
             progressDialog.setMessage("Please wait...");
             progressDialog.show();
+
+             */
             loginUser(userId, userPass);
         }
 

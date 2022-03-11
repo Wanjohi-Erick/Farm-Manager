@@ -80,5 +80,8 @@
     <string name="last_name">Last Name</string>
     <string name="enter_the_name_of_your_farm">Enter the name of your farm</string>
     <string name="forgotten_username_or_password">Forgotten username or password?</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="assign_activity">Assign Activity</string>
+    <string name="view_history">View History</string>
 
 </resources>

@@ -25,8 +25,6 @@ public class UpdateEmployee extends AppCompatActivity {
         setContentView(R.layout.activity_update_employee);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());

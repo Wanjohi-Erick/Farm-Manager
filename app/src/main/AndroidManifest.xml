@@ -18,6 +18,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ViewHistory"
+            android:exported="false" />
+        <activity
+            android:name=".AssignActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewEmployee"
+            android:exported="false" />
+        <activity
             android:name=".Registration"
             android:exported="false" />
         <activity
@@ -45,7 +54,7 @@
         <activity
             android:name=".UpdateEmployee"
             android:label="@string/title_activity_update_employee"
-            android:parentActivityName=".Employees" >
+            android:parentActivityName=".Employees">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Employees" />
@@ -120,8 +129,7 @@
         </activity>
         <activity
             android:name=".LauncherActivity"
-            android:label="@string/title_activity_launcher">
-        </activity>
+            android:label="@string/title_activity_launcher" />
         <activity
             android:name=".RecordSalesActivity"
             android:label="@string/app_name"
