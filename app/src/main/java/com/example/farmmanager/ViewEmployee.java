@@ -17,11 +17,14 @@ public class ViewEmployee extends AppCompatActivity {
         setContentView(R.layout.activity_view_employee);
 
         Bundle bundle = getIntent().getExtras();
-        String firstName, lastName, id, phone;
+        String firstName, lastName, id, phone, gender, role, salary;
         firstName = bundle.getString("firstName");
         lastName = bundle.getString("lastName");
         id = bundle.getString("id");
         phone = bundle.getString("contact");
+        gender = bundle.getString("gender");
+        role = bundle.getString("role");
+        salary = bundle.getString("salary");
         String employee = String.format("%s %s", firstName, lastName);
         Objects.requireNonNull(getSupportActionBar()).setTitle(employee);
 
@@ -35,6 +38,9 @@ public class ViewEmployee extends AppCompatActivity {
             toUpdateIntent.putExtra("lastName", lastName);
             toUpdateIntent.putExtra("id", id);
             toUpdateIntent.putExtra("contact", phone);
+            toUpdateIntent.putExtra("gender", gender);
+            toUpdateIntent.putExtra("role", role);
+            toUpdateIntent.putExtra("salary", salary);
             startActivity(toUpdateIntent);
         });
 

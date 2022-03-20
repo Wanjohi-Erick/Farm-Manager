@@ -24,7 +24,7 @@ public class UpdateEmployee extends AppCompatActivity {
     String ID, employee_first_name, employee_last_name, employee_contact, gender, role, salary;
     Button updateEmployeeBtn;
     ProgressDialog progressDialog;
-    String update_url = "http://www/fmanager.agria.co.ke/updateEmpoyee.php";
+    String update_url = "http://www.fmanager.agria.co.ke/updateEmployee.php";
     private AlertDialog.Builder dialog;
 
     @Override
@@ -51,10 +51,26 @@ public class UpdateEmployee extends AppCompatActivity {
         employee_first_name = bundle.getString("firstName");
         employee_last_name = bundle.getString("lastName");
         employee_contact = bundle.getString("contact");
+        gender = bundle.getString("gender");
+        role = bundle.getString("role");
+        salary = bundle.getString("salary");
         idEdit.setText(ID);
         firstNameEdit.setText(employee_first_name);
         lastNameEdit.setText(employee_last_name);
         contactEdit.setText(employee_contact);
+        if (gender.equalsIgnoreCase("null")) {
+            genderEdit.setText("");
+        }
+        if (role.equalsIgnoreCase("null")) {
+            roleEdit.setText("");
+        }
+        if (salary.equalsIgnoreCase("null")) {
+            salaryEdit.setText("");
+        }
+
+        genderEdit.setText(gender);
+        roleEdit.setText(role);
+        salaryEdit.setText(salary);
         updateEmployeeBtn.setOnClickListener(v -> {
             if(validFields(gender, role, salary)) {
                 gender = genderEdit.getText().toString();
@@ -71,9 +87,9 @@ public class UpdateEmployee extends AppCompatActivity {
     private void sendToDatabase(String id, String firstName, String lastName, String contact, String gender, String role, String salary) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, update_url, response -> {
             progressDialog.dismiss();
-            if (response.equalsIgnoreCase("recorded successfully")) {
+            if (response.equalsIgnoreCase("success")) {
                 dialog.setTitle("Server Response");
-                dialog.setMessage("Employee details recorded successfully");
+                dialog.setMessage("Employee details updated successfully");
                 dialog.setPositiveButton("Ok", (dialog, which) -> dialog.dismiss());
                 AlertDialog alertDialog = dialog.create();
                 alertDialog.show();
@@ -118,20 +134,20 @@ public class UpdateEmployee extends AppCompatActivity {
         if (TextUtils.isEmpty(gender)) {
             genderEdit.setError("Field cannot be empty");
             genderEdit.requestFocus();
-            return true;
+            return false;
         }
 
         if (TextUtils.isEmpty(role)) {
             roleEdit.setError("Field cannot be empty");
             roleEdit.requestFocus();
-            return true;
+            return false;
         }
 
         if (TextUtils.isEmpty(salary)) {
             salaryEdit.setError("Field cannot be empty");
             salaryEdit.requestFocus();
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 }

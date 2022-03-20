@@ -79,7 +79,10 @@ public class Employees extends AppCompatActivity {
                     String employeeID = details.getString("employeeID");
                     String employeeContact = details.getString("contact");
                     String dateOfEmployment = details.getString("dateOfEmployment");
-                    EmployeesModel employeesModel = new EmployeesModel(employeeID, employeeFirstName, employeeLastName, employeeContact, dateOfEmployment);
+                    String gender = details.getString("gender");
+                    String role = details.getString("role");
+                    String salary = details.getString("salary");
+                    EmployeesModel employeesModel = new EmployeesModel(employeeID, employeeFirstName, employeeLastName, employeeContact, dateOfEmployment, gender, role, salary);
                     employeeList.add(employeesModel);
                     employeesAdapter = new EmployeesAdapter(employeeList);
                     employeesRecycler.setAdapter(employeesAdapter);
